@@ -24,7 +24,7 @@ public interface MovieDao {
     @Query("select * from movies_table")
     LiveData<List<Movie>> getAllMovies();
 
-    @Query("select * from movies_table where genre_id==:genreId")
-    LiveData<List<Movie>> getGenreMovies(int genreId);
+    @Query("select * from movies_table where bill_id==:billId")
+    LiveData<List<Movie>> getGenreMovies(int billId);
 
 }

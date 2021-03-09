@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel mainActivityViewModel;
     private ActivityMainBinding activityMainBinding;
     private MainActivityClickHandlers clickHandlers;
-    private Bill selectedGenre;
-    private ArrayList<Bill> genreArrayList;
+    private Bill selectedBill;
+    private ArrayList<Bill> billArrayList;
     private ArrayList<Movie> movieArrayList;
     private RecyclerView recyclerView;
     private MovieAdapter movieAdapter;
@@ -64,9 +64,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<Bill> genres) {
 
-                genreArrayList = (ArrayList<Bill>) genres;
+                billArrayList = (ArrayList<Bill>) genres;
                 for (Bill genre : genres) {
-                    Log.d("MyTAG", genre.getGenreName());
+                    Log.d("MyTAG", genre.getBillName());
                 }
 
                 showInSpinner();
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     private void showInSpinner() {
 
         ArrayAdapter<Bill> genreArrayAdapter = new ArrayAdapter<Bill>(this,
-                R.layout.spinner_item, genreArrayList);
+                R.layout.spinner_item, billArrayList);
         genreArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
         activityMainBinding.setSpinnerAdapter(genreArrayAdapter);
 
@@ -121,14 +121,14 @@ public class MainActivity extends AppCompatActivity {
         //метод для спинера. это стандартный код для спинера
         public void onSelectedItem(AdapterView<?> parent, View view, int position, long id) {
 
-            selectedGenre = (Bill) parent.getItemAtPosition(position);
+            selectedBill = (Bill) parent.getItemAtPosition(position);
 
-            String message = "id is " + selectedGenre.getId() +
-                    "\n name is " + selectedGenre.getGenreName();
+            String message = "id is " + selectedBill.getId() +
+                    "\n name is " + selectedBill.getBillName();
 
 //            Toast.makeText(parent.getContext(), message, Toast.LENGTH_SHORT).show();
 
-            loadGenreMoviesInArrayList(selectedGenre.getId());
+            loadGenreMoviesInArrayList(selectedBill.getId());
         }
     }
 
@@ -192,12 +192,12 @@ public class MainActivity extends AppCompatActivity {
                                     @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        int selectedGenreId = selectedGenre.getId();
+        int selectedGenreId = selectedBill.getId();
 
         if (requestCode == ADD_MOVIE_REQUEST_CODE && resultCode == RESULT_OK) {
 
             Movie movie = new Movie();
-            movie.setGenreId(selectedGenreId);
+            movie.setBillId(selectedGenreId);
             movie.setMovieName(data.getStringExtra(com.example.budget3.AddEditActivity.MOVIE_NAME));
             movie.setMovieDescription(data.getStringExtra(com.example.budget3.AddEditActivity.MOVIE_DESCRIPTION));
 
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
 
             Movie movie = new Movie();
             movie.setMovieId(selectedMovieId);
-            movie.setGenreId(selectedGenreId);
+            movie.setBillId(selectedGenreId);
             movie.setMovieName(data.getStringExtra(com.example.budget3.AddEditActivity.MOVIE_NAME));
             movie.setMovieDescription(data.getStringExtra(com.example.budget3.AddEditActivity.MOVIE_DESCRIPTION));
 

@@ -13,13 +13,13 @@ import java.util.List;
 public interface BillDao {
 
     @Insert
-    void insert(Bill genre);
+    void insert(Bill bill);
 
     @Update
-    void update(Bill genre);
+    void update(Bill bill);
 
     @Delete
-    void delete(Bill genre);
+    void delete(Bill bill);
 
     @Query("select * from bills_table")
     LiveData<List<Bill>> getAllGenres();

@@ -10,7 +10,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "movies_table", foreignKeys = @ForeignKey(entity = Bill.class,
-        parentColumns = "id", childColumns = "genre_id",//связываем таблицы
+        parentColumns = "id", childColumns = "bill_id",//связываем таблицы
         onDelete = ForeignKey.CASCADE)) // указываем, что если срока жанра будет удалена, что делать со всеми фильмами (удаляем)
 public class Movie extends BaseObservable {
 
@@ -21,18 +21,18 @@ public class Movie extends BaseObservable {
     private String movieName;
     @ColumnInfo(name = "movie_description")
     private String movieDescription;
-    @ColumnInfo(name = "genre_id")
-    private int genreId;
+    @ColumnInfo(name = "bill_id")
+    private int billId;
 
     @Ignore
     public Movie() {
     }
 
-    public Movie(int movieId, String movieName, String movieDescription, int genreId) {
+    public Movie(int movieId, String movieName, String movieDescription, int billId) {
         this.movieId = movieId;
         this.movieName = movieName;
         this.movieDescription = movieDescription;
-        this.genreId = genreId;
+        this.billId = billId;
     }
 
     @Bindable
@@ -66,12 +66,12 @@ public class Movie extends BaseObservable {
     }
 
     @Bindable
-    public int getGenreId() {
-        return genreId;
+    public int getBillId() {
+        return billId;
     }
 
-    public void setGenreId(int genreId) {
-        this.genreId = genreId;
-        notifyPropertyChanged(BR.genreId);
+    public void setBillId(int billId) {
+        this.billId = billId;
+        notifyPropertyChanged(BR.billId);
     }
 }

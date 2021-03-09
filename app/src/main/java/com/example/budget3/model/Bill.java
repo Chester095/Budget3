@@ -16,16 +16,16 @@ public class Bill extends BaseObservable {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo(name = "genre_name")
-    private String genreName;
+    @ColumnInfo(name = "bill_name")
+    private String billName;
 
     @Ignore
     public Bill() {
     }
 
-    public Bill(int id, String genreName) {
+    public Bill(int id, String billName) {
         this.id = id;
-        this.genreName = genreName;
+        this.billName = billName;
     }
 
     @Bindable //для индентификации
@@ -39,17 +39,17 @@ public class Bill extends BaseObservable {
     }
 
     @Bindable
-    public String getGenreName() {
-        return genreName;
+    public String getBillName() {
+        return billName;
     }
 
-    public void setGenreName(String genreName) {
-        this.genreName = genreName;
-        notifyPropertyChanged(BR.genreName);
+    public void setBillName(String billName) {
+        this.billName = billName;
+        notifyPropertyChanged(BR.billName);
     }
 
     @Override
     public String toString() {
-        return this.genreName;
+        return this.billName;
     }
 }
