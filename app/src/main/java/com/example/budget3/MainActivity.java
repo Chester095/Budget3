@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.budget3.databinding.ActivityMainBinding;
-import com.example.budget3.model.Genre;
+import com.example.budget3.model.Bill;
 import com.example.budget3.model.Movie;
 import com.example.budget3.viewmodel.MainActivityViewModel;
 
@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel mainActivityViewModel;
     private ActivityMainBinding activityMainBinding;
     private MainActivityClickHandlers clickHandlers;
-    private Genre selectedGenre;
-    private ArrayList<Genre> genreArrayList;
+    private Bill selectedGenre;
+    private ArrayList<Bill> genreArrayList;
     private ArrayList<Movie> movieArrayList;
     private RecyclerView recyclerView;
     private MovieAdapter movieAdapter;
@@ -60,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
         clickHandlers = new MainActivityClickHandlers();
         activityMainBinding.setClickHandlers(clickHandlers);
 
-        mainActivityViewModel.getGenres().observe(this, new Observer<List<Genre>>() {
+        mainActivityViewModel.getGenres().observe(this, new Observer<List<Bill>>() {
             @Override
-            public void onChanged(List<Genre> genres) {
+            public void onChanged(List<Bill> genres) {
 
-                genreArrayList = (ArrayList<Genre>) genres;
-                for (Genre genre : genres) {
+                genreArrayList = (ArrayList<Bill>) genres;
+                for (Bill genre : genres) {
                     Log.d("MyTAG", genre.getGenreName());
                 }
 
@@ -73,20 +73,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
     }
 
     private void showInSpinner() {
 
-        ArrayAdapter<Genre> genreArrayAdapter = new ArrayAdapter<Genre>(this,
+        ArrayAdapter<Bill> genreArrayAdapter = new ArrayAdapter<Bill>(this,
                 R.layout.spinner_item, genreArrayList);
         genreArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
         activityMainBinding.setSpinnerAdapter(genreArrayAdapter);
@@ -130,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         //метод для спинера. это стандартный код для спинера
         public void onSelectedItem(AdapterView<?> parent, View view, int position, long id) {
 
-            selectedGenre = (Genre) parent.getItemAtPosition(position);
+            selectedGenre = (Bill) parent.getItemAtPosition(position);
 
             String message = "id is " + selectedGenre.getId() +
                     "\n name is " + selectedGenre.getGenreName();

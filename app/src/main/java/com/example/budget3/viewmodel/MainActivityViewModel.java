@@ -7,14 +7,14 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.budget3.model.AppRepository;
-import com.example.budget3.model.Genre;
+import com.example.budget3.model.Bill;
 import com.example.budget3.model.Movie;
 
 import java.util.List;
 
 public class MainActivityViewModel extends AndroidViewModel {
     AppRepository appRepository;
-    private LiveData<List<Genre>> genres;
+    private LiveData<List<Bill>> genres;
     private LiveData<List<Movie>> genreMovies;
 
     public MainActivityViewModel(@NonNull Application application) {
@@ -22,7 +22,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         appRepository = new AppRepository(application);
     }
 
-    public LiveData<List<Genre>> getGenres() {
+    public LiveData<List<Bill>> getGenres() {
         genres = appRepository.getGenres();
         return genres;
     }

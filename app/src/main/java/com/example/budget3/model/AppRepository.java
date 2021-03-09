@@ -9,10 +9,10 @@ import java.util.List;
 
 public class AppRepository {
 
-    private GenreDao genreDao;
+    private BillDao genreDao;
     private MovieDao movieDao;
 
-    private LiveData<List<Genre>> genres;
+    private LiveData<List<Bill>> genres;
     private LiveData<List<Movie>> movies;
 
     public AppRepository(Application application) {
@@ -22,7 +22,7 @@ public class AppRepository {
         movieDao = database.getMovieDao();
     }
 
-    public LiveData<List<Genre>> getGenres() {
+    public LiveData<List<Bill>> getGenres() {
         return genreDao.getAllGenres();
     }
 
@@ -30,7 +30,7 @@ public class AppRepository {
         return movieDao.getGenreMovies(genreId);
     }
 
-    public void insertGenre(Genre genre) {
+    public void insertGenre(Bill genre) {
         new InsertGenreAsyncTask(genreDao).execute(genre);
     }
 
@@ -38,16 +38,16 @@ public class AppRepository {
         new InsertMovieAsyncTask(movieDao).execute(movie);
     }
 
-    private static class InsertGenreAsyncTask extends AsyncTask<Genre, Void, Void> {
+    private static class InsertGenreAsyncTask extends AsyncTask<Bill, Void, Void> {
 
-        private GenreDao genreDao;
+        private BillDao genreDao;
 
-        public InsertGenreAsyncTask(GenreDao genreDao) {
+        public InsertGenreAsyncTask(BillDao genreDao) {
             this.genreDao = genreDao;
         }
 
         @Override
-        protected Void doInBackground(Genre... genres) {
+        protected Void doInBackground(Bill... genres) {
             genreDao.insert(genres[0]);
             return null;
         }
@@ -69,7 +69,7 @@ public class AppRepository {
         }
     }
 
-    public void updateGenre(Genre genre) {
+    public void updateGenre(Bill genre) {
 
         new UpdateGenreAsyncTask(genreDao).execute(genre);
 
@@ -81,16 +81,16 @@ public class AppRepository {
 
     }
 
-    private static class UpdateGenreAsyncTask extends AsyncTask<Genre, Void, Void> {
+    private static class UpdateGenreAsyncTask extends AsyncTask<Bill, Void, Void> {
 
-        private GenreDao genreDao;
+        private BillDao genreDao;
 
-        public UpdateGenreAsyncTask(GenreDao genreDao) {
+        public UpdateGenreAsyncTask(BillDao genreDao) {
             this.genreDao = genreDao;
         }
 
         @Override
-        protected Void doInBackground(Genre... genres) {
+        protected Void doInBackground(Bill... genres) {
             genreDao.update(genres[0]);
             return null;
         }
@@ -112,7 +112,7 @@ public class AppRepository {
         }
     }
 
-    public void deleteGenre(Genre genre) {
+    public void deleteGenre(Bill genre) {
 
         new DeleteGenreAsyncTask(genreDao).execute(genre);
     }
@@ -122,16 +122,16 @@ public class AppRepository {
         new DeleteMovieAsyncTask(movieDao).execute(movie);
     }
 
-    private static class DeleteGenreAsyncTask extends AsyncTask<Genre, Void, Void> {
+    private static class DeleteGenreAsyncTask extends AsyncTask<Bill, Void, Void> {
 
-        private GenreDao genreDao;
+        private BillDao genreDao;
 
-        public DeleteGenreAsyncTask(GenreDao genreDao) {
+        public DeleteGenreAsyncTask(BillDao genreDao) {
             this.genreDao = genreDao;
         }
 
         @Override
-        protected Void doInBackground(Genre... genres) {
+        protected Void doInBackground(Bill... genres) {
             genreDao.delete(genres[0]);
             return null;
         }

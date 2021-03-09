@@ -9,7 +9,7 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "movies_table", foreignKeys = @ForeignKey(entity = Genre.class,
+@Entity(tableName = "movies_table", foreignKeys = @ForeignKey(entity = Bill.class,
         parentColumns = "id", childColumns = "genre_id",//связываем таблицы
         onDelete = ForeignKey.CASCADE)) // указываем, что если срока жанра будет удалена, что делать со всеми фильмами (удаляем)
 public class Movie extends BaseObservable {

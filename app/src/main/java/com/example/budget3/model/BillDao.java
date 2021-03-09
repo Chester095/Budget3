@@ -10,17 +10,17 @@ import androidx.room.Update;
 import java.util.List;
 
 @Dao
-public interface GenreDao {
+public interface BillDao {
 
     @Insert
-    void insert(Genre genre);
+    void insert(Bill genre);
 
     @Update
-    void update(Genre genre);
+    void update(Bill genre);
 
     @Delete
-    void delete(Genre genre);
+    void delete(Bill genre);
 
-    @Query("select * from genres_table")
-    LiveData<List<Genre>> getAllGenres();
+    @Query("select * from bills_table")
+    LiveData<List<Bill>> getAllGenres();
 }

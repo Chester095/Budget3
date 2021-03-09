@@ -9,10 +9,10 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Genre.class, Movie.class}, version = 1)
+@Database(entities = {Bill.class, Movie.class}, version = 1)
 public abstract class MoviesDatabase extends RoomDatabase {
     private static MoviesDatabase instance;
-    public abstract GenreDao getGenreDao();
+    public abstract BillDao getGenreDao();
     public abstract MovieDao getMovieDao();
     public static synchronized MoviesDatabase getInstance(Context context) {
         if(instance == null) {
@@ -35,7 +35,7 @@ public abstract class MoviesDatabase extends RoomDatabase {
     };
 
     private static class InitialDataAsyncTask extends AsyncTask<Void, Void, Void> {
-        private GenreDao genreDao;
+        private BillDao genreDao;
         private MovieDao movieDao;
 
         public InitialDataAsyncTask(MoviesDatabase database) {
@@ -46,14 +46,14 @@ public abstract class MoviesDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            Genre comedyGenre = new Genre();
-            comedyGenre.setGenreName("Comedy");
+            Bill comedyGenre = new Bill();
+            comedyGenre.setGenreName("Тинькофф");
 
-            Genre romanceGenre = new Genre();
-            romanceGenre.setGenreName("Romance");
+            Bill romanceGenre = new Bill();
+            romanceGenre.setGenreName("Сбербанк");
 
-            Genre dramaGenre = new Genre();
-            dramaGenre.setGenreName("Drama");
+            Bill dramaGenre = new Bill();
+            dramaGenre.setGenreName("Газпромбанк");
 
             genreDao.insert(comedyGenre);
             genreDao.insert(romanceGenre);

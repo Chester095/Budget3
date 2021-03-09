@@ -14,10 +14,6 @@ import com.example.budget3.model.Movie;
 import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<com.example.budget3.MovieAdapter.MovieViewHolder> {
-    //                                <com.android.uraall.myfavoritemovies.MovieAdapter.MovieViewHolder>
-
-//    type="com.example.budget3.MainActivity.MainActivityClickHandlers" />
-//               uraall.myfavoritemovies.MainActivity.MainActivityClickHandlers
 
     private OnItemClickListener onItemClickListener;
     private ArrayList<Movie> movieArrayList = new ArrayList<>();

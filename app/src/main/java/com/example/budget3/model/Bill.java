@@ -10,8 +10,8 @@ import androidx.room.PrimaryKey;
 
 
 //Жанры Фильма
-@Entity(tableName = "genres_table")
-public class Genre extends BaseObservable {
+@Entity(tableName = "bills_table")
+public class Bill extends BaseObservable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -20,10 +20,10 @@ public class Genre extends BaseObservable {
     private String genreName;
 
     @Ignore
-    public Genre() {
+    public Bill() {
     }
 
-    public Genre(int id, String genreName) {
+    public Bill(int id, String genreName) {
         this.id = id;
         this.genreName = genreName;
     }
