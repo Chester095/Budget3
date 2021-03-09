@@ -8,40 +8,40 @@ import androidx.lifecycle.LiveData;
 
 import com.example.budget3.model.AppRepository;
 import com.example.budget3.model.Bill;
-import com.example.budget3.model.Movie;
+import com.example.budget3.model.ListItem;
 
 import java.util.List;
 
 public class MainActivityViewModel extends AndroidViewModel {
     AppRepository appRepository;
-    private LiveData<List<Bill>> genres;
-    private LiveData<List<Movie>> genreMovies;
+    private LiveData<List<Bill>> bills;
+    private LiveData<List<ListItem>> billListItems;
 
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
         appRepository = new AppRepository(application);
     }
 
-    public LiveData<List<Bill>> getGenres() {
-        genres = appRepository.getGenres();
-        return genres;
+    public LiveData<List<Bill>> getBills() {
+        bills = appRepository.getBills();
+        return bills;
     }
 
-    public LiveData<List<Movie>> getGenreMovies(int genreId) {
-        genreMovies = appRepository.getGenreMovies(genreId);
-        return genreMovies;
+    public LiveData<List<ListItem>> getBillListItems(int billId) {
+        billListItems = appRepository.getBillListItems(billId);
+        return billListItems;
     }
 
     //метод чтобы добавлять новый фильм
-    public void addNewMovie(Movie movie) {
-        appRepository.insertMovie(movie);
+    public void addNewListItem(ListItem listItem) {
+        appRepository.insertListItem(listItem);
     }
 
-    public void updateMovie(Movie movie) {
-        appRepository.updateMovie(movie);
+    public void updateListItem(ListItem listItem) {
+        appRepository.updateListItem(listItem);
     }
 
-    public void deleteMovie(Movie movie) {
-        appRepository.deleteMovie(movie);
+    public void deleteListItem(ListItem listItem) {
+        appRepository.deleteListItem(listItem);
     }
 }

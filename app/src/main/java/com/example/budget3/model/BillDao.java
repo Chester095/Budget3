@@ -22,5 +22,5 @@ public interface BillDao {
     void delete(Bill bill);
 
     @Query("select * from bills_table")
-    LiveData<List<Bill>> getAllGenres();
+    LiveData<List<Bill>> getAllBills();
 }

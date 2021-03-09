@@ -9,7 +9,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 
-//Жанры Фильма
+//Список статей
 @Entity(tableName = "bills_table")
 public class Bill extends BaseObservable {
 

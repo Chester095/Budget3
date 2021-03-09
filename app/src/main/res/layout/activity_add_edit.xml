@@ -10,8 +10,8 @@
             type="com.example.budget3.AddEditActivity.AddEditActivityClickHandlers" />
 
         <variable
-            name="movie"
-            type="com.example.budget3.model.Movie" />
+            name="listItem"
+            type="com.example.budget3.model.ListItem" />
 
     </data>
 
@@ -23,7 +23,7 @@
         tools:context=".AddEditActivity">
 
         <TextView
-            android:id="@+id/movieNameTextView"
+            android:id="@+id/listItemNameTextView"
             android:text="Name"
             android:layout_marginTop="16dp"
             android:textSize="24sp"
@@ -31,9 +31,9 @@
             android:layout_height="wrap_content"/>
 
         <EditText
-            android:id="@+id/movieNameEditText"
+            android:id="@+id/listItemNameEditText"
             android:hint="Name"
-            android:text="@={movie.movieName}"
+            android:text="@={listItem.listItemName}"
             android:layout_marginTop="16dp"
             android:textSize="24sp"
             android:layout_width="match_parent"
@@ -50,7 +50,7 @@
         <EditText
             android:id="@+id/movieDescriptionEditText"
             android:hint="Description"
-            android:text="@={movie.movieDescription}"
+            android:text="@={listItem.listItemDescription}"
             android:layout_marginTop="16dp"
             android:textSize="24sp"
             android:layout_width="match_parent"
