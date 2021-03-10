@@ -10,8 +10,8 @@
             type="com.example.budget3.AddEditActivity.AddEditActivityClickHandlers" />
 
         <variable
-            name="movie"
-            type="com.example.budget3.model.Movie" />
+            name="operation"
+            type="com.example.budget3.model.Operation" />
 
     </data>
 
@@ -23,7 +23,7 @@
         tools:context=".AddEditActivity">
 
         <TextView
-            android:id="@+id/movieNameTextView"
+            android:id="@+id/OperationNameTextView"
             android:text="Name"
             android:layout_marginTop="16dp"
             android:textSize="24sp"
@@ -31,16 +31,16 @@
             android:layout_height="wrap_content"/>
 
         <EditText
-            android:id="@+id/movieNameEditText"
+            android:id="@+id/OperationNameEditText"
             android:hint="Name"
-            android:text="@={movie.movieName}"
+            android:text="@={operation.OperationName}"
             android:layout_marginTop="16dp"
             android:textSize="24sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/movieDescriptionTextView"
+            android:id="@+id/OperationDescriptionTextView"
             android:text="Description"
             android:layout_marginTop="16dp"
             android:textSize="24sp"
@@ -48,9 +48,9 @@
             android:layout_height="wrap_content"/>
 
         <EditText
-            android:id="@+id/movieDescriptionEditText"
+            android:id="@+id/OperationDescriptionEditText"
             android:hint="Description"
-            android:text="@={movie.movieDescription}"
+            android:text="@={operation.OperationDescription}"
             android:layout_marginTop="16dp"
             android:textSize="24sp"
             android:layout_width="match_parent"

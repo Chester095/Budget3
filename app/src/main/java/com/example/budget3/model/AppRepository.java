@@ -10,32 +10,32 @@ import java.util.List;
 public class AppRepository {
 
     private BillDao billDao;
-    private MovieDao movieDao;
+    private OperationDao operationDao;
 
     private LiveData<List<Bill>> bills;
-    private LiveData<List<Movie>> movies;
+    private LiveData<List<Operation>> Operations;
 
     public AppRepository(Application application) {
 
-        MoviesDatabase database = MoviesDatabase.getInstance(application);
+        OperationsDatabase database = OperationsDatabase.getInstance(application);
         billDao = database.getBillDao();
-        movieDao = database.getMovieDao();
+        operationDao = database.getOperationDao();
     }
 
     public LiveData<List<Bill>> getBills() {
         return billDao.getAllBills();
     }
 
-    public LiveData<List<Movie>> getBillMovies(int billId) {
-        return movieDao.getBillMovies(billId);
+    public LiveData<List<Operation>> getBillOperations(int billId) {
+        return operationDao.getBillOperations(billId);
     }
 
     public void insertBill(Bill bill) {
         new InsertBillAsyncTask(billDao).execute(bill);
     }
 
-    public void insertMovie(Movie movie) {
-        new InsertMovieAsyncTask(movieDao).execute(movie);
+    public void insertOperation(Operation operation) {
+        new InsertOperationAsyncTask(operationDao).execute(operation);
     }
 
     private static class InsertBillAsyncTask extends AsyncTask<Bill, Void, Void> {
@@ -53,18 +53,18 @@ public class AppRepository {
         }
     }
 
-    private static class InsertMovieAsyncTask extends AsyncTask<Movie, Void, Void> {
+    private static class InsertOperationAsyncTask extends AsyncTask<Operation, Void, Void> {
 
-        private MovieDao movieDao;
+        private OperationDao operationDao;
 
-        public InsertMovieAsyncTask(MovieDao movieDao) {
-            this.movieDao = movieDao;
+        public InsertOperationAsyncTask(OperationDao operationDao) {
+            this.operationDao = operationDao;
         }
 
         @Override
-        protected Void doInBackground(Movie... movies) {
+        protected Void doInBackground(Operation... operations) {
 
-            movieDao.insert(movies[0]);
+            operationDao.insert(operations[0]);
             return null;
         }
     }
@@ -75,9 +75,9 @@ public class AppRepository {
 
     }
 
-    public void updateMovie(Movie movie) {
+    public void updateOperation(Operation operation) {
 
-        new UpdateMovieAsyncTask(movieDao).execute(movie);
+        new UpdateOperationAsyncTask(operationDao).execute(operation);
 
     }
 
@@ -96,18 +96,18 @@ public class AppRepository {
         }
     }
 
-    private static class UpdateMovieAsyncTask extends AsyncTask<Movie, Void, Void> {
+    private static class UpdateOperationAsyncTask extends AsyncTask<Operation, Void, Void> {
 
-        private MovieDao movieDao;
+        private OperationDao operationDao;
 
-        public UpdateMovieAsyncTask(MovieDao movieDao) {
-            this.movieDao = movieDao;
+        public UpdateOperationAsyncTask(OperationDao operationDao) {
+            this.operationDao = operationDao;
         }
 
         @Override
-        protected Void doInBackground(Movie... movies) {
+        protected Void doInBackground(Operation... operations) {
 
-            movieDao.update(movies[0]);
+            operationDao.update(operations[0]);
             return null;
         }
     }
@@ -118,8 +118,8 @@ public class AppRepository {
     }
 
 
-    public void deleteMovie(Movie movie) {
-        new DeleteMovieAsyncTask(movieDao).execute(movie);
+    public void deleteOperation(Operation operation) {
+        new DeleteOperationAsyncTask(operationDao).execute(operation);
     }
 
     private static class DeleteBillAsyncTask extends AsyncTask<Bill, Void, Void> {
@@ -137,18 +137,18 @@ public class AppRepository {
         }
     }
 
-    private static class DeleteMovieAsyncTask extends AsyncTask<Movie, Void, Void> {
+    private static class DeleteOperationAsyncTask extends AsyncTask<Operation, Void, Void> {
 
-        private MovieDao movieDao;
+        private OperationDao operationDao;
 
-        public DeleteMovieAsyncTask(MovieDao movieDao) {
-            this.movieDao = movieDao;
+        public DeleteOperationAsyncTask(OperationDao operationDao) {
+            this.operationDao = operationDao;
         }
 
         @Override
-        protected Void doInBackground(Movie... movies) {
+        protected Void doInBackground(Operation... operations) {
 
-            movieDao.delete(movies[0]);
+            operationDao.delete(operations[0]);
             return null;
         }
     }

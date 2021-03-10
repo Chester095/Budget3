@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="movie"
-            type="com.example.budget3.model.Movie" />
+            name="operation"
+            type="com.example.budget3.model.Operation" />
 
     </data>
 
@@ -24,7 +24,7 @@
 
             <TextView
                 android:id="@+id/nameTextView"
-                android:text="@{movie.movieName}"
+                android:text="@{operation.OperationName}"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
 
             <TextView
                 android:id="@+id/descriptionTextView"
-                android:text="@{movie.movieDescription}"
+                android:text="@{operation.OperationDescription}"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
