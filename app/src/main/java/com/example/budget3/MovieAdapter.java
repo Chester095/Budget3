@@ -8,52 +8,51 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.budget3.databinding.ListitemListItemBinding;
-import com.example.budget3.databinding.ListitemListItemBinding;
-import com.example.budget3.model.ListItem;
+import com.example.budget3.databinding.MovieListItemBinding;
+import com.example.budget3.model.Movie;
 
 import java.util.ArrayList;
 
-public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListItemViewHolder> {
+public class MovieAdapter extends RecyclerView.Adapter<com.example.budget3.MovieAdapter.MovieViewHolder> {
 
     private OnItemClickListener onItemClickListener;
-    private ArrayList<ListItem> listItemArrayList = new ArrayList<>();
+    private ArrayList<Movie> movieArrayList = new ArrayList<>();
 
 
     //код который накачивает данными
     @NonNull
     @Override
-    public ListItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        ListitemListItemBinding listitemListItemBinding = DataBindingUtil.inflate(
-                LayoutInflater.from(parent.getContext()), R.layout.listitem_list_item,
+        MovieListItemBinding movieListItemBinding = DataBindingUtil.inflate(
+                LayoutInflater.from(parent.getContext()), R.layout.movie_list_item,
                 parent, false
         );
 
-        return new ListItemViewHolder(listitemListItemBinding);
+        return new MovieViewHolder(movieListItemBinding);
     }
 
 
     //получаем объект
     @Override
-    public void onBindViewHolder(@NonNull ListItemViewHolder holder, int position) {
-        ListItem listItem = listItemArrayList.get(position);
+    public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
+        Movie movie = movieArrayList.get(position);
         //передаём объект в разметку
-        holder.movieListItemBinding.setListItem(listItem);
+        holder.movieListItemBinding.setMovie(movie);
     }
 
 
     //должен вернуть размер ArrayList
     @Override
     public int getItemCount() {
-        return listItemArrayList.size();
+        return movieArrayList.size();
     }
 
-    class ListItemViewHolder extends RecyclerView.ViewHolder{
+    class MovieViewHolder extends RecyclerView.ViewHolder{
 
-        ListitemListItemBinding movieListItemBinding;
+        MovieListItemBinding movieListItemBinding;
 
-        public ListItemViewHolder(@NonNull ListitemListItemBinding movieListItemBinding) {
+        public MovieViewHolder(@NonNull MovieListItemBinding movieListItemBinding) {
             super(movieListItemBinding.getRoot());
             this.movieListItemBinding = movieListItemBinding;
             movieListItemBinding.getRoot().setOnClickListener(new View.OnClickListener() {
@@ -63,7 +62,7 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListIt
                     int position = getAdapterPosition();
                     //делаем проверку
                     if (onItemClickListener != null && position != RecyclerView.NO_POSITION) {
-                        onItemClickListener.onItemClick(listItemArrayList.get(position));
+                        onItemClickListener.onItemClick(movieArrayList.get(position));
                     }
                 }
             });
@@ -72,16 +71,16 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ListIt
 
     //для управления кликом событием
     public interface OnItemClickListener {
-        //должны получить объект  listItem
-        void onItemClick(ListItem listItem);
+        //должны получить объект  movie
+        void onItemClick(Movie movie);
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
-    public void setListItemArrayList(ArrayList<ListItem> listItemArrayList) {
-        this.listItemArrayList = listItemArrayList;
+    public void setMovieArrayList(ArrayList<Movie> movieArrayList) {
+        this.movieArrayList = movieArrayList;
         notifyDataSetChanged(); //для обновления RecycleView
     }
 }

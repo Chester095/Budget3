@@ -8,14 +8,14 @@ import androidx.lifecycle.LiveData;
 
 import com.example.budget3.model.AppRepository;
 import com.example.budget3.model.Bill;
-import com.example.budget3.model.ListItem;
+import com.example.budget3.model.Movie;
 
 import java.util.List;
 
 public class MainActivityViewModel extends AndroidViewModel {
     AppRepository appRepository;
     private LiveData<List<Bill>> bills;
-    private LiveData<List<ListItem>> billListItems;
+    private LiveData<List<Movie>> billMovies;
 
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
@@ -27,21 +27,21 @@ public class MainActivityViewModel extends AndroidViewModel {
         return bills;
     }
 
-    public LiveData<List<ListItem>> getBillListItems(int billId) {
-        billListItems = appRepository.getBillListItems(billId);
-        return billListItems;
+    public LiveData<List<Movie>> getBillMovies(int billId) {
+        billMovies = appRepository.getBillMovies(billId);
+        return billMovies;
     }
 
     //метод чтобы добавлять новый фильм
-    public void addNewListItem(ListItem listItem) {
-        appRepository.insertListItem(listItem);
+    public void addNewMovie(Movie movie) {
+        appRepository.insertMovie(movie);
     }
 
-    public void updateListItem(ListItem listItem) {
-        appRepository.updateListItem(listItem);
+    public void updateMovie(Movie movie) {
+        appRepository.updateMovie(movie);
     }
 
-    public void deleteListItem(ListItem listItem) {
-        appRepository.deleteListItem(listItem);
+    public void deleteMovie(Movie movie) {
+        appRepository.deleteMovie(movie);
     }
 }

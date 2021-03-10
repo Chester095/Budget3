@@ -10,32 +10,32 @@ import java.util.List;
 public class AppRepository {
 
     private BillDao billDao;
-    private ListItemDao listItemDao;
+    private MovieDao movieDao;
 
     private LiveData<List<Bill>> bills;
-    private LiveData<List<ListItem>> listItems;
+    private LiveData<List<Movie>> movies;
 
     public AppRepository(Application application) {
 
-        ListItemsDatabase database = ListItemsDatabase.getInstance(application);
+        MoviesDatabase database = MoviesDatabase.getInstance(application);
         billDao = database.getBillDao();
-        listItemDao = database.getListItemDao();
+        movieDao = database.getMovieDao();
     }
 
     public LiveData<List<Bill>> getBills() {
         return billDao.getAllBills();
     }
 
-    public LiveData<List<ListItem>> getBillListItems(int billId) {
-        return listItemDao.getBillListItems(billId);
+    public LiveData<List<Movie>> getBillMovies(int billId) {
+        return movieDao.getBillMovies(billId);
     }
 
     public void insertBill(Bill bill) {
         new InsertBillAsyncTask(billDao).execute(bill);
     }
 
-    public void insertListItem(ListItem listItem) {
-        new InsertListItemAsyncTask(listItemDao).execute(listItem);
+    public void insertMovie(Movie movie) {
+        new InsertMovieAsyncTask(movieDao).execute(movie);
     }
 
     private static class InsertBillAsyncTask extends AsyncTask<Bill, Void, Void> {
@@ -53,18 +53,18 @@ public class AppRepository {
         }
     }
 
-    private static class InsertListItemAsyncTask extends AsyncTask<ListItem, Void, Void> {
+    private static class InsertMovieAsyncTask extends AsyncTask<Movie, Void, Void> {
 
-        private ListItemDao listItemDao;
+        private MovieDao movieDao;
 
-        public InsertListItemAsyncTask(ListItemDao listItemDao) {
-            this.listItemDao = listItemDao;
+        public InsertMovieAsyncTask(MovieDao movieDao) {
+            this.movieDao = movieDao;
         }
 
         @Override
-        protected Void doInBackground(ListItem... listItems) {
+        protected Void doInBackground(Movie... movies) {
 
-            listItemDao.insert(listItems[0]);
+            movieDao.insert(movies[0]);
             return null;
         }
     }
@@ -75,9 +75,9 @@ public class AppRepository {
 
     }
 
-    public void updateListItem(ListItem listItem) {
+    public void updateMovie(Movie movie) {
 
-        new UpdateListItemAsyncTask(listItemDao).execute(listItem);
+        new UpdateMovieAsyncTask(movieDao).execute(movie);
 
     }
 
@@ -96,18 +96,18 @@ public class AppRepository {
         }
     }
 
-    private static class UpdateListItemAsyncTask extends AsyncTask<ListItem, Void, Void> {
+    private static class UpdateMovieAsyncTask extends AsyncTask<Movie, Void, Void> {
 
-        private ListItemDao listItemDao;
+        private MovieDao movieDao;
 
-        public UpdateListItemAsyncTask(ListItemDao listItemDao) {
-            this.listItemDao = listItemDao;
+        public UpdateMovieAsyncTask(MovieDao movieDao) {
+            this.movieDao = movieDao;
         }
 
         @Override
-        protected Void doInBackground(ListItem... listItems) {
+        protected Void doInBackground(Movie... movies) {
 
-            listItemDao.update(listItems[0]);
+            movieDao.update(movies[0]);
             return null;
         }
     }
@@ -118,8 +118,8 @@ public class AppRepository {
     }
 
 
-    public void deleteListItem(ListItem listItem) {
-        new DeleteListItemAsyncTask(listItemDao).execute(listItem);
+    public void deleteMovie(Movie movie) {
+        new DeleteMovieAsyncTask(movieDao).execute(movie);
     }
 
     private static class DeleteBillAsyncTask extends AsyncTask<Bill, Void, Void> {
@@ -137,18 +137,18 @@ public class AppRepository {
         }
     }
 
-    private static class DeleteListItemAsyncTask extends AsyncTask<ListItem, Void, Void> {
+    private static class DeleteMovieAsyncTask extends AsyncTask<Movie, Void, Void> {
 
-        private ListItemDao listItemDao;
+        private MovieDao movieDao;
 
-        public DeleteListItemAsyncTask(ListItemDao listItemDao) {
-            this.listItemDao = listItemDao;
+        public DeleteMovieAsyncTask(MovieDao movieDao) {
+            this.movieDao = movieDao;
         }
 
         @Override
-        protected Void doInBackground(ListItem... listItems) {
+        protected Void doInBackground(Movie... movies) {
 
-            listItemDao.delete(listItems[0]);
+            movieDao.delete(movies[0]);
             return null;
         }
     }

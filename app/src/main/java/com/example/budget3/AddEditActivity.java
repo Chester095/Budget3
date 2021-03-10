@@ -10,15 +10,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.example.budget3.databinding.ActivityAddEditBinding;
-import com.example.budget3.model.ListItem;
+import com.example.budget3.model.Movie;
 
 public class AddEditActivity extends AppCompatActivity {
 
-    private ListItem listItem;
+    private Movie movie;
 
-    public static final String LISTITEM_ID = "listItemId";
-    public static final String LISTITEM_NAME = "listItemName";
-    public static final String LISTITEM_DESCRIPTION = "listItemDescription";
+    public static final String MOVIE_ID = "movieId";
+    public static final String MOVIE_NAME = "movieName";
+    public static final String MOVIE_DESCRIPTION = "movieDescription";
     private ActivityAddEditBinding activityAddEditBinding;
     private AddEditActivityClickHandlers addEditActivityClickHandlers;
 
@@ -27,22 +27,22 @@ public class AddEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit);
 
-        listItem = new ListItem();
+        movie = new Movie();
         activityAddEditBinding = DataBindingUtil.setContentView(this,
                 R.layout.activity_add_edit);
-        activityAddEditBinding.setListItem(listItem);
+        activityAddEditBinding.setMovie(movie);
         addEditActivityClickHandlers = new AddEditActivityClickHandlers(this);
         activityAddEditBinding.setClickHandlers(addEditActivityClickHandlers);
 
         Intent intent = getIntent();
 
-        if (intent.hasExtra(LISTITEM_ID)) {
-            setTitle("Edit listItem");
+        if (intent.hasExtra(MOVIE_ID)) {
+            setTitle("Edit movie");
 
-            listItem.setListItemName(intent.getStringExtra(LISTITEM_NAME));
-            listItem.setListItemDescription(intent.getStringExtra(LISTITEM_DESCRIPTION));
+            movie.setMovieName(intent.getStringExtra(MOVIE_NAME));
+            movie.setMovieDescription(intent.getStringExtra(MOVIE_DESCRIPTION));
         } else {
-            setTitle("Add listItem");
+            setTitle("Add movie");
         }
 
     }
@@ -57,15 +57,15 @@ public class AddEditActivity extends AppCompatActivity {
 
         public void onOkButtonClicked(View view) {
 
-            if (listItem.getListItemName() == null) {
+            if (movie.getMovieName() == null) {
 
                 Toast.makeText(context, "Please input the mame", Toast.LENGTH_SHORT).show();
 
             } else {
 
                 Intent intent = new Intent();
-                intent.putExtra(LISTITEM_NAME, listItem.getListItemName());
-                intent.putExtra(LISTITEM_DESCRIPTION, listItem.getListItemDescription());
+                intent.putExtra(MOVIE_NAME, movie.getMovieName());
+                intent.putExtra(MOVIE_DESCRIPTION, movie.getMovieDescription());
                 setResult(RESULT_OK, intent);
                 finish();
 

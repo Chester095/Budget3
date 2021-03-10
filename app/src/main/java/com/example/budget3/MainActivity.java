@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.budget3.databinding.ActivityMainBinding;
 import com.example.budget3.model.Bill;
-import com.example.budget3.model.ListItem;
+import com.example.budget3.model.Movie;
 import com.example.budget3.viewmodel.MainActivityViewModel;
 
 import java.util.ArrayList;
@@ -35,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityClickHandlers clickHandlers;
     private Bill selectedBill;
     private ArrayList<Bill> billArrayList;
-    private ArrayList<ListItem> listItemArrayList;
+    private ArrayList<Movie> movieArrayList;
     private RecyclerView recyclerView;
-    private ListItemAdapter listItemAdapter;
-    private int selectedListItemId;
+    private MovieAdapter movieAdapter;
+    private int selectedMovieId;
 
-    public static final int ADD_LISTITEM_REQUEST_CODE = 111;
-    public static final int EDIT_LISTITEM_REQUEST_CODE = 222;
+    public static final int ADD_MOVIE_REQUEST_CODE = 111;
+    public static final int EDIT_MOVIE_REQUEST_CODE = 222;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
 //            Toast.makeText(MainActivity.this, "Button is clicked!",
 //                    Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(com.example.budget3.MainActivity.this, com.example.budget3.AddEditActivity.class);
-            startActivityForResult(intent, ADD_LISTITEM_REQUEST_CODE);
+            startActivityForResult(intent, ADD_MOVIE_REQUEST_CODE);
 
         }
 
@@ -128,16 +128,16 @@ public class MainActivity extends AppCompatActivity {
 
 //            Toast.makeText(parent.getContext(), message, Toast.LENGTH_SHORT).show();
 
-            loadBillListItemsInArrayList(selectedBill.getId());
+            loadBillMoviesInArrayList(selectedBill.getId());
         }
     }
 
     //загружает список фильмов определённого жанра
-    private void loadBillListItemsInArrayList(int billID) {
-        mainActivityViewModel.getBillListItems(billID).observe(this, new Observer<List<ListItem>>() {
+    private void loadBillMoviesInArrayList(int billID) {
+        mainActivityViewModel.getBillMovies(billID).observe(this, new Observer<List<Movie>>() {
             @Override
-            public void onChanged(List<ListItem> listItems) {
-                listItemArrayList = (ArrayList<ListItem>) listItems;
+            public void onChanged(List<Movie> movies) {
+                movieArrayList = (ArrayList<Movie>) movies;
                 loadRecyclerView();
             }
         });
@@ -146,24 +146,24 @@ public class MainActivity extends AppCompatActivity {
     //для загрузки RecycledView
     private void loadRecyclerView() {
 
-//        recyclerView = activityMainBinding.secondaryLayout.recyclerView;
+        recyclerView = activityMainBinding.secondaryLayout.recyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        listItemAdapter = new ListItemAdapter();
-        listItemAdapter.setListItemArrayList(listItemArrayList);
-        recyclerView.setAdapter(listItemAdapter);
+        movieAdapter = new MovieAdapter();
+        movieAdapter.setMovieArrayList(movieArrayList);
+        recyclerView.setAdapter(movieAdapter);
 
-        listItemAdapter.setOnItemClickListener(new ListItemAdapter.OnItemClickListener() {
+        movieAdapter.setOnItemClickListener(new MovieAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(ListItem listItem) {
-                selectedListItemId = listItem.getListItemId();
+            public void onItemClick(Movie movie) {
+                selectedMovieId = movie.getMovieId();
                 Intent intent = new Intent(com.example.budget3.MainActivity.this,
                         com.example.budget3.AddEditActivity.class);
-                intent.putExtra(com.example.budget3.AddEditActivity.LISTITEM_ID, selectedListItemId);
-                intent.putExtra(com.example.budget3.AddEditActivity.LISTITEM_NAME, listItem.getListItemName());
-                intent.putExtra(com.example.budget3.AddEditActivity.LISTITEM_DESCRIPTION, listItem.getListItemDescription());
-                startActivityForResult(intent, EDIT_LISTITEM_REQUEST_CODE);
+                intent.putExtra(com.example.budget3.AddEditActivity.MOVIE_ID, selectedMovieId);
+                intent.putExtra(com.example.budget3.AddEditActivity.MOVIE_NAME, movie.getMovieName());
+                intent.putExtra(com.example.budget3.AddEditActivity.MOVIE_DESCRIPTION, movie.getMovieDescription());
+                startActivityForResult(intent, EDIT_MOVIE_REQUEST_CODE);
             }
         });
 
@@ -180,8 +180,8 @@ public class MainActivity extends AppCompatActivity {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder,
                                  int direction) {
 
-                ListItem listItemToDelete = listItemArrayList.get(viewHolder.getAdapterPosition());
-                mainActivityViewModel.deleteListItem(listItemToDelete);
+                Movie movieToDelete = movieArrayList.get(viewHolder.getAdapterPosition());
+                mainActivityViewModel.deleteMovie(movieToDelete);
 
             }
         }).attachToRecyclerView(recyclerView);
@@ -194,24 +194,24 @@ public class MainActivity extends AppCompatActivity {
 
         int selectedBillId = selectedBill.getId();
 
-        if (requestCode == ADD_LISTITEM_REQUEST_CODE && resultCode == RESULT_OK) {
+        if (requestCode == ADD_MOVIE_REQUEST_CODE && resultCode == RESULT_OK) {
 
-            ListItem listItem = new ListItem();
-            listItem.setBillId(selectedBillId);
-            listItem.setListItemName(data.getStringExtra(com.example.budget3.AddEditActivity.LISTITEM_NAME));
-            listItem.setListItemDescription(data.getStringExtra(com.example.budget3.AddEditActivity.LISTITEM_DESCRIPTION));
+            Movie movie = new Movie();
+            movie.setBillId(selectedBillId);
+            movie.setMovieName(data.getStringExtra(com.example.budget3.AddEditActivity.MOVIE_NAME));
+            movie.setMovieDescription(data.getStringExtra(com.example.budget3.AddEditActivity.MOVIE_DESCRIPTION));
 
-            mainActivityViewModel.addNewListItem(listItem);
+            mainActivityViewModel.addNewMovie(movie);
 
-        } else if (requestCode == EDIT_LISTITEM_REQUEST_CODE && resultCode == RESULT_OK) {
+        } else if (requestCode == EDIT_MOVIE_REQUEST_CODE && resultCode == RESULT_OK) {
 
-            ListItem listItem = new ListItem();
-            listItem.setListItemId(selectedListItemId);
-            listItem.setBillId(selectedBillId);
-            listItem.setListItemName(data.getStringExtra(com.example.budget3.AddEditActivity.LISTITEM_NAME));
-            listItem.setListItemDescription(data.getStringExtra(com.example.budget3.AddEditActivity.LISTITEM_DESCRIPTION));
+            Movie movie = new Movie();
+            movie.setMovieId(selectedMovieId);
+            movie.setBillId(selectedBillId);
+            movie.setMovieName(data.getStringExtra(com.example.budget3.AddEditActivity.MOVIE_NAME));
+            movie.setMovieDescription(data.getStringExtra(com.example.budget3.AddEditActivity.MOVIE_DESCRIPTION));
 
-            mainActivityViewModel.updateListItem(listItem);
+            mainActivityViewModel.updateMovie(movie);
 
         }
     }
