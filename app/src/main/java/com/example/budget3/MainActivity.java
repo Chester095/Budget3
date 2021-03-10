@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
 
         int selectedBillId = selectedBill.getId();
 
-        if (requestCode == ADD_OPER_REQUEST_CODE && resultCode == RESULT_OK) {
+        if (requestCode == ADD_OPERATION_REQUEST_CODE && resultCode == RESULT_OK) {
 
             Operation operation = new Operation();
             operation.setBillId(selectedBillId);
