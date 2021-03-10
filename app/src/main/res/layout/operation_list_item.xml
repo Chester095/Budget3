@@ -17,26 +17,66 @@
         app:cardCornerRadius="4dp">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:padding="8dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="4dp">
 
-            <TextView
-                android:id="@+id/nameTextView"
-                android:text="@{operation.OperationName}"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
 
-            <TextView
-                android:id="@+id/descriptionTextView"
-                android:text="@{operation.OperationDescription}"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28sp"
+                    android:text="@{operation.OperationName}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_weight="3"/>
+
+                <TextView
+                    android:id="@+id/valueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0"
+                    android:gravity="right"
+                    android:text="Цена"
+                    android:textSize="16sp"
+                    android:textStyle="italic" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/descriptionTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28sp"
+                    android:text="@{operation.OperationDescription}"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_weight="3"/>
+
+
+                <TextView
+                    android:id="@+id/accountTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0"
+                    android:gravity="right"
+                    android:text="Счёт"
+                    android:textSize="16sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
 
         </LinearLayout>
 
