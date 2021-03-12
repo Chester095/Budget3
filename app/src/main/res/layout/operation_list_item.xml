@@ -44,7 +44,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="0"
                     android:gravity="right"
-                    android:text="Цена"
+                    android:text="Amoun"
                     android:textSize="16sp"
                     android:textStyle="italic" />
 

@@ -9,6 +9,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 
+
 //Список статей
 @Entity(tableName = "bills_table")
 public class Bill extends BaseObservable {
@@ -52,4 +53,6 @@ public class Bill extends BaseObservable {
     public String toString() {
         return this.billName;
     }
+
+
 }

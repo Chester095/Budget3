@@ -19,6 +19,7 @@ public class AddEditActivity extends AppCompatActivity {
     public static final String Operation_ID = "OperationId";
     public static final String Operation_NAME = "OperationName";
     public static final String Operation_DESCRIPTION = "OperationDescription";
+    public static final String Operation_AMOUNT = "OperationAmount";
     private ActivityAddEditBinding activityAddEditBinding;
     private AddEditActivityClickHandlers addEditActivityClickHandlers;
 
@@ -41,6 +42,7 @@ public class AddEditActivity extends AppCompatActivity {
 
             operation.setOperationName(intent.getStringExtra(Operation_NAME));
             operation.setOperationDescription(intent.getStringExtra(Operation_DESCRIPTION));
+//            operation.setOperationAmount(intent.getStringExtra(Operation_AMOUNT));
         } else {
             setTitle("Add operation");
         }
@@ -66,6 +68,7 @@ public class AddEditActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra(Operation_NAME, operation.getOperationName());
                 intent.putExtra(Operation_DESCRIPTION, operation.getOperationDescription());
+//                intent.putExtra(Operation_AMOUNT, operation.getOperationAmount());
                 setResult(RESULT_OK, intent);
                 finish();
 
