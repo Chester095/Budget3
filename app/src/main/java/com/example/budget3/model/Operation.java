@@ -17,12 +17,12 @@ public class Operation extends BaseObservable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "operation_id")
     private int operationId;
-    @ColumnInfo(name = "bill_id")
-    private int billId;
     @ColumnInfo(name = "operation_name")
     private String operationName;
     @ColumnInfo(name = "operation_description")
     private String operationDescription;
+    @ColumnInfo(name = "bill_id")
+    private int billId;
 //    @ColumnInfo(name = "operation_amount")
 //    private String operationAmount;
 
@@ -37,7 +37,6 @@ public class Operation extends BaseObservable {
         this.billId = billId;
 //        this.operationAmount = operationAmount;
     }
-
 
     @Bindable
     public int getOperationId() {

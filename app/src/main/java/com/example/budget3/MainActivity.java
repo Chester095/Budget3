@@ -2,12 +2,13 @@ package com.example.budget3;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+
+import com.example.budget3.databinding.ActivityMainBinding;
+import com.example.budget3.model.Bill;
+import com.example.budget3.model.Operation;
+import com.example.budget3.viewmodel.MainActivityViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,10 +21,13 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.budget3.databinding.ActivityMainBinding;
-import com.example.budget3.model.Bill;
-import com.example.budget3.model.Operation;
-import com.example.budget3.viewmodel.MainActivityViewModel;
+import android.util.Log;
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -158,10 +162,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Operation operation) {
                 selectedOperationId = operation.getOperationId();
-                Intent intent = new Intent(com.example.budget3.MainActivity.this,com.example.budget3.AddEditActivity.class);
-                intent.putExtra(com.example.budget3.AddEditActivity.Operation_ID, selectedOperationId);
-                intent.putExtra(com.example.budget3.AddEditActivity.Operation_NAME, operation.getOperationName());
-                intent.putExtra(AddEditActivity.Operation_DESCRIPTION, operation.getOperationDescription());
+                Intent intent = new Intent(MainActivity.this,AddEditActivity.class);
+                intent.putExtra(AddEditActivity.OPERATION_ID, selectedOperationId);
+                intent.putExtra(AddEditActivity.OPERATION_NAME, operation.getOperationName());
+                intent.putExtra(AddEditActivity.OPERATION_DESCRIPTION, operation.getOperationDescription());
 //                intent.putExtra(AddEditActivity.Operation_AMOUNT, operation.getOperationAmount());
                 startActivityForResult(intent, EDIT_OPERATION_REQUEST_CODE);
             }
@@ -198,8 +202,8 @@ public class MainActivity extends AppCompatActivity {
 
             Operation operation = new Operation();
             operation.setBillId(selectedBillId);
-            operation.setOperationName(data.getStringExtra(com.example.budget3.AddEditActivity.Operation_NAME));
-            operation.setOperationDescription(data.getStringExtra(com.example.budget3.AddEditActivity.Operation_DESCRIPTION));
+            operation.setOperationName(data.getStringExtra(AddEditActivity.OPERATION_NAME));
+            operation.setOperationDescription(data.getStringExtra(AddEditActivity.OPERATION_DESCRIPTION));
 //            operation.setOperationAmount(data.getStringExtra(AddEditActivity.Operation_AMOUNT));
 
             mainActivityViewModel.addNewOperation(operation);
@@ -209,8 +213,8 @@ public class MainActivity extends AppCompatActivity {
             Operation operation = new Operation();
             operation.setOperationId(selectedOperationId);
             operation.setBillId(selectedBillId);
-            operation.setOperationName(data.getStringExtra(com.example.budget3.AddEditActivity.Operation_NAME));
-            operation.setOperationDescription(data.getStringExtra(com.example.budget3.AddEditActivity.Operation_DESCRIPTION));
+            operation.setOperationName(data.getStringExtra(AddEditActivity.OPERATION_NAME));
+            operation.setOperationDescription(data.getStringExtra(AddEditActivity.OPERATION_DESCRIPTION));
 //            operation.setOperationAmount(data.getStringExtra(AddEditActivity.Operation_AMOUNT));
 
             mainActivityViewModel.updateOperation(operation);
