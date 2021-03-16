@@ -7,11 +7,42 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "operations_table", foreignKeys = @ForeignKey(entity = Bill.class,
+import static androidx.room.ForeignKey.NO_ACTION;
+
+//https://stackoverflow.com/questions/58593506/room-compile-problem-column-references-a-foreign-key-but-it-is-not-part-of-an
+//https://startandroid.ru/ru/courses/architecture-components/27-course/architecture-components/530-urok-6-room-entity.html
+@Entity(tableName = "operations_table",
+        foreignKeys = {
+                @ForeignKey(
+                        entity = Bill.class,
+                        parentColumns = {"id"},
+                        childColumns = {"bill_id"},
+                        onDelete = NO_ACTION
+                ),
+                @ForeignKey(
+                        entity = Section.class,
+                        parentColumns = {"id"},
+                        childColumns = {"section_id"},
+                        onDelete = NO_ACTION
+                ),
+                @ForeignKey(
+                        entity = SubSection.class,
+                        parentColumns = {"id"},
+                        childColumns = {"subsection_id"},
+                        onDelete = NO_ACTION
+                ),
+
+        },
+        indices = {@Index(value = {"bill_id", "section_id", "subsection_id"}, unique = true)})
+/*        @ForeignKey(
         parentColumns = "id", childColumns = "bill_id",//связываем таблицы
-        onDelete = ForeignKey.CASCADE)) // указываем, что если срока жанра будет удалена, что делать со всеми фильмами (удаляем)
+        onDelete = ForeignKey.CASCADE),
+        indices = {@Index(value = {"bill_id"}, unique = true)}) // указываем, что если срока жанра будет удалена, что делать со всеми фильмами (удаляем)*/
+
+
 public class Operation extends BaseObservable {
 
     @PrimaryKey(autoGenerate = true)
@@ -23,6 +54,10 @@ public class Operation extends BaseObservable {
     private String operationDescription;
     @ColumnInfo(name = "bill_id")
     private int billId;
+    @ColumnInfo(name = "section_id")
+    private int sectionId;
+    @ColumnInfo(name = "subsection_id")
+    private int subSectionId;
     @ColumnInfo(name = "operation_amount")
     private String operationAmount;
 
@@ -30,11 +65,13 @@ public class Operation extends BaseObservable {
     public Operation() {
     }
 
-    public Operation(int operationId, String operationName, String operationDescription, int billId, String operationAmount) {
+    public Operation(int operationId, String operationName, String operationDescription, int billId, int sectionId, int subSectionId, String operationAmount) {
         this.operationId = operationId;
         this.operationName = operationName;
         this.operationDescription = operationDescription;
         this.billId = billId;
+        this.sectionId = sectionId;
+        this.subSectionId = subSectionId;
         this.operationAmount = operationAmount;
     }
 
@@ -79,7 +116,29 @@ public class Operation extends BaseObservable {
     }
 
     @Bindable
-    public String getOperationAmount() { return operationAmount; }
+    public int getSectionId() {
+        return sectionId;
+    }
+
+    public void setSectionId(int sectionId) {
+        this.sectionId = sectionId;
+//        notifyPropertyChanged(BR.sectionId);
+    }
+
+    @Bindable
+    public int getSubSectionId() {
+        return subSectionId;
+    }
+
+    public void setSubSectionId(int subSectionId) {
+        this.subSectionId = subSectionId;
+//        notifyPropertyChanged(BR.subSectionId);
+    }
+
+    @Bindable
+    public String getOperationAmount() {
+        return operationAmount;
+    }
 
     public void setOperationAmount(String OperationAmount) {
         this.operationAmount = OperationAmount;

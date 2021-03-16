@@ -3,13 +3,13 @@
 1.	СМС (int idSms, String textSms, String senderSms, long dateTimeSms, char checkSms)
 2.	Правила СМС (int idRulesSms, arraylist[String rule][String textCondition], String Actions)
 3.	Список операций (Operations_table):
-    •	Личный ID - int operations_id,
-    •	ID для привязки счёта - int bill_id,
+    v•	Личный ID - int operations_id,
+    v•	ID для привязки счёта - int bill_id,
     •	ID для привязки раздела (статьи) - int section_id,
     •	ID для привязки подраздела (подстатьи) int subsection_id,
-    •	Сумма расхода - double operationAmount,
+    v•	Сумма расхода - double operationAmount,
     •	ID для привязки типа операции - int operationType_id,
-    •	Примечание к операции – String operationDescription,
+    v•	Примечание к операции – String operationDescription,
     •	Дата операции - Calendar operationDate
 4.	Счета (int idBill, String billName, String billType, double billProcent, String billNote, String currency)
 5.	Статьи (int idSection, String sectionType)
