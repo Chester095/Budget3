@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(AddEditActivity.OPERATION_ID, selectedOperationId);
                 intent.putExtra(AddEditActivity.OPERATION_NAME, operation.getOperationName());
                 intent.putExtra(AddEditActivity.OPERATION_DESCRIPTION, operation.getOperationDescription());
-//                intent.putExtra(AddEditActivity.Operation_AMOUNT, operation.getOperationAmount());
+                intent.putExtra(AddEditActivity.OPERATION_AMOUNT, operation.getOperationAmount());
                 startActivityForResult(intent, EDIT_OPERATION_REQUEST_CODE);
             }
         });
@@ -192,8 +192,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,
-                                    @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         int selectedBillId = selectedBill.getId();
@@ -204,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
             operation.setBillId(selectedBillId);
             operation.setOperationName(data.getStringExtra(AddEditActivity.OPERATION_NAME));
             operation.setOperationDescription(data.getStringExtra(AddEditActivity.OPERATION_DESCRIPTION));
-//            operation.setOperationAmount(data.getStringExtra(AddEditActivity.Operation_AMOUNT));
+            operation.setOperationAmount(data.getStringExtra(AddEditActivity.OPERATION_AMOUNT));
 
             mainActivityViewModel.addNewOperation(operation);
 
@@ -215,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
             operation.setBillId(selectedBillId);
             operation.setOperationName(data.getStringExtra(AddEditActivity.OPERATION_NAME));
             operation.setOperationDescription(data.getStringExtra(AddEditActivity.OPERATION_DESCRIPTION));
-//            operation.setOperationAmount(data.getStringExtra(AddEditActivity.Operation_AMOUNT));
+            operation.setOperationAmount(data.getStringExtra(AddEditActivity.OPERATION_AMOUNT));
 
             mainActivityViewModel.updateOperation(operation);
 

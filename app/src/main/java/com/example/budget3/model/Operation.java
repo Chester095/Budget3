@@ -23,19 +23,19 @@ public class Operation extends BaseObservable {
     private String operationDescription;
     @ColumnInfo(name = "bill_id")
     private int billId;
-//    @ColumnInfo(name = "operation_amount")
-//    private String operationAmount;
+    @ColumnInfo(name = "operation_amount")
+    private String operationAmount;
 
     @Ignore
     public Operation() {
     }
 
-    public Operation(int operationId, String operationName, String operationDescription, int billId/*, String operationAmount*/) {
+    public Operation(int operationId, String operationName, String operationDescription, int billId, String operationAmount) {
         this.operationId = operationId;
         this.operationName = operationName;
         this.operationDescription = operationDescription;
         this.billId = billId;
-//        this.operationAmount = operationAmount;
+        this.operationAmount = operationAmount;
     }
 
     @Bindable
@@ -78,12 +78,11 @@ public class Operation extends BaseObservable {
         notifyPropertyChanged(BR.billId);
     }
 
-/*    public String getOperationAmount() {
-        return operationAmount;
-    }
+    @Bindable
+    public String getOperationAmount() { return operationAmount; }
 
     public void setOperationAmount(String OperationAmount) {
         this.operationAmount = OperationAmount;
-//        notifyPropertyChanged(BR.am);
-    }*/
+        notifyPropertyChanged(BR.operationAmount);
+    }
 }

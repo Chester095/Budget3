@@ -19,7 +19,7 @@ public class AddEditActivity extends AppCompatActivity {
     public static final String OPERATION_ID = "OperationId";
     public static final String OPERATION_NAME = "OperationName";
     public static final String OPERATION_DESCRIPTION = "OperationDescription";
-    //public static final String Operation_AMOUNT = "OperationAmount";
+    public static final String OPERATION_AMOUNT = "OperationAmount";
     private ActivityAddEditBinding activityAddEditBinding;
     private AddEditActivityClickHandlers addEditActivityClickHandlers;
 
@@ -29,8 +29,7 @@ public class AddEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_edit);
 
         operation = new Operation();
-        activityAddEditBinding = DataBindingUtil.setContentView(this,
-                R.layout.activity_add_edit);
+        activityAddEditBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_edit);
         activityAddEditBinding.setOperation(operation);
         addEditActivityClickHandlers = new AddEditActivityClickHandlers(this);
         activityAddEditBinding.setClickHandlers(addEditActivityClickHandlers);
@@ -42,7 +41,7 @@ public class AddEditActivity extends AppCompatActivity {
 
             operation.setOperationName(intent.getStringExtra(OPERATION_NAME));
             operation.setOperationDescription(intent.getStringExtra(OPERATION_DESCRIPTION));
-//            operation.setOperationAmount(intent.getStringExtra(Operation_AMOUNT));
+            operation.setOperationAmount(intent.getStringExtra(OPERATION_AMOUNT));
         } else {
             setTitle("Add operation");
         }
@@ -61,14 +60,14 @@ public class AddEditActivity extends AppCompatActivity {
 
             if (operation.getOperationName() == null) {
 
-                Toast.makeText(context, "Please input the mame", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Please input the name", Toast.LENGTH_SHORT).show();
 
             } else {
 
                 Intent intent = new Intent();
                 intent.putExtra(OPERATION_NAME, operation.getOperationName());
                 intent.putExtra(OPERATION_DESCRIPTION, operation.getOperationDescription());
-//                intent.putExtra(Operation_AMOUNT, operation.getOperationAmount());
+                intent.putExtra(OPERATION_AMOUNT, operation.getOperationAmount());
                 setResult(RESULT_OK, intent);
                 finish();
 
