@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     
     <data>
-        
+        <import type="java.lang.Integer" />
         <variable
             name="clickHandlers"
             type="com.example.budget3.AddEditActivity.AddEditActivityClickHandlers" />
@@ -66,12 +66,12 @@
 
         <EditText
             android:id="@+id/OperationAmountEditText"
-            android:hint="Amount"
-            android:text="@={operation.OperationAmount}"
-            android:layout_marginTop="16dp"
-            android:textSize="24sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Amount"
+            android:text="123"
+            android:textSize="24sp" />
 
 
         <Button

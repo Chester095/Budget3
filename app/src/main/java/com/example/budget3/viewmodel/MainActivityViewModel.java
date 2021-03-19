@@ -54,8 +54,9 @@ public class MainActivityViewModel extends AndroidViewModel {
         return billOperations;
     }
 
-    //метод чтобы добавлять новый фильм
+    //метод чтобы добавлять новую операцию
     public void addNewOperation(Operation operation) { appRepository.insertOperation(operation); }
+
     public void updateOperation(Operation operation) {
         appRepository.updateOperation(operation);
     }

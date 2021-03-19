@@ -1,14 +1,19 @@
 package com.example.budget3.model;
 
+import android.widget.TextView;
+
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
-import androidx.databinding.library.baseAdapters.BR;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseBindingAdapter;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+
+import com.example.budget3.BR;
 
 import static androidx.room.ForeignKey.NO_ACTION;
 
@@ -36,7 +41,13 @@ import static androidx.room.ForeignKey.NO_ACTION;
                 ),
 
         },
-        indices = {@Index(value = {"bill_id", "section_id", "subsection_id"}, unique = true)})
+//        indices = {@Index(value = {"bill_id", "section_id", "subsection_id"}, unique = true)})
+        indices = {
+                @Index("bill_id"),
+                @Index("section_id"),
+                @Index("subsection_id")})
+
+
 /*        @ForeignKey(
         parentColumns = "id", childColumns = "bill_id",//связываем таблицы
         onDelete = ForeignKey.CASCADE),
@@ -59,13 +70,13 @@ public class Operation extends BaseObservable {
     @ColumnInfo(name = "subsection_id")
     private int subSectionId;
     @ColumnInfo(name = "operation_amount")
-    private String operationAmount;
+    private int operationAmount;
 
     @Ignore
     public Operation() {
     }
 
-    public Operation(int operationId, String operationName, String operationDescription, int billId, int sectionId, int subSectionId, String operationAmount) {
+    public Operation(int operationId, String operationName, String operationDescription, int billId, int sectionId, int subSectionId, int operationAmount) {
         this.operationId = operationId;
         this.operationName = operationName;
         this.operationDescription = operationDescription;
@@ -82,7 +93,7 @@ public class Operation extends BaseObservable {
 
     public void setOperationId(int OperationId) {
         this.operationId = OperationId;
-        notifyPropertyChanged(BR.operationId);
+        notifyPropertyChanged(com.example.budget3.BR.operationId);
     }
 
     @Bindable
@@ -92,7 +103,7 @@ public class Operation extends BaseObservable {
 
     public void setOperationName(String OperationName) {
         this.operationName = OperationName;
-        notifyPropertyChanged(BR.operationName);
+        notifyPropertyChanged(com.example.budget3.BR.operationName);
     }
 
     @Bindable
@@ -102,7 +113,7 @@ public class Operation extends BaseObservable {
 
     public void setOperationDescription(String OperationDescription) {
         this.operationDescription = OperationDescription;
-        notifyPropertyChanged(BR.operationDescription);
+        notifyPropertyChanged(com.example.budget3.BR.operationDescription);
     }
 
     @Bindable
@@ -112,7 +123,7 @@ public class Operation extends BaseObservable {
 
     public void setBillId(int billId) {
         this.billId = billId;
-        notifyPropertyChanged(BR.billId);
+        notifyPropertyChanged(com.example.budget3.BR.billId);
     }
 
     @Bindable
@@ -122,7 +133,7 @@ public class Operation extends BaseObservable {
 
     public void setSectionId(int sectionId) {
         this.sectionId = sectionId;
-//        notifyPropertyChanged(BR.sectionId);
+        notifyPropertyChanged(com.example.budget3.BR.sectionId);
     }
 
     @Bindable
@@ -132,16 +143,17 @@ public class Operation extends BaseObservable {
 
     public void setSubSectionId(int subSectionId) {
         this.subSectionId = subSectionId;
-//        notifyPropertyChanged(BR.subSectionId);
+        notifyPropertyChanged(com.example.budget3.BR.subSectionId);
     }
 
     @Bindable
-    public String getOperationAmount() {
+    public int getOperationAmount() {
         return operationAmount;
     }
 
-    public void setOperationAmount(String OperationAmount) {
+    public void setOperationAmount(int OperationAmount) {
         this.operationAmount = OperationAmount;
         notifyPropertyChanged(BR.operationAmount);
     }
+
 }

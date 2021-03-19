@@ -45,7 +45,7 @@ public class SubSection extends BaseObservable {
 
     public void setSubSectionName(String subSectionName) {
         this.subSectionName = subSectionName;
-//        notifyPropertyChanged(BR.subSectionName);
+        notifyPropertyChanged(BR.subSectionName);
     }
 
     @Override

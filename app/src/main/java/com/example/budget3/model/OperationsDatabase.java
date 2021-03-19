@@ -58,7 +58,10 @@ public abstract class OperationsDatabase extends RoomDatabase {
             romanceBill.setBillName("Сбербанк");
             Bill dramaBill = new Bill();
             dramaBill.setBillName("Газпромбанк");
+            Bill investBill = new Bill();
+            investBill.setBillName("Инвестиции");
 
+            billDao.insert(investBill);
             billDao.insert(comedyBill);
             billDao.insert(romanceBill);
             billDao.insert(dramaBill);
@@ -81,11 +84,15 @@ public abstract class OperationsDatabase extends RoomDatabase {
             SubSection electrikSubSection = new SubSection();
             electrikSubSection.setSubSectionName("ТЭК и ПЭС");
 
+            subSectionDao.insert(alcoSubSection);
+            subSectionDao.insert(odezhdaSubSection);
+            subSectionDao.insert(electrikSubSection);
+
 
             Operation operation1 = new Operation();
             operation1.setOperationName("Bad Boys for Life");
             operation1.setOperationDescription("The Bad Boys Mike Lowrey and Marcus.");
-            operation1.setOperationAmount("15351");
+            operation1.setOperationAmount(15351);
             operation1.setSectionId(2);
             operation1.setSubSectionId(1);
             operation1.setBillId(1);
@@ -93,7 +100,7 @@ public abstract class OperationsDatabase extends RoomDatabase {
             Operation operation2 = new Operation();
             operation2.setOperationName("Parasite");
             operation2.setOperationDescription("All unemployed, Ki-taek and his fam.");
-            operation2.setOperationAmount("81651");
+            operation2.setOperationAmount(35155);
             operation2.setSectionId(2);
             operation2.setSubSectionId(2);
             operation2.setBillId(1);
@@ -101,7 +108,7 @@ public abstract class OperationsDatabase extends RoomDatabase {
             Operation operation3 = new Operation();
             operation3.setOperationName(" Once Upon a Time... in Hollywood");
             operation3.setOperationDescription("A faded television actor and his st.");
-            operation3.setOperationAmount("338457");
+            operation3.setOperationAmount(338457);
             operation3.setSectionId(3);
             operation3.setSubSectionId(1);
             operation3.setBillId(1);
@@ -109,7 +116,7 @@ public abstract class OperationsDatabase extends RoomDatabase {
             Operation operation4 = new Operation();
             operation4.setOperationName("You");
             operation4.setOperationDescription("A dangerously charming, intensely o.");
-            operation4.setOperationAmount("32151");
+            operation4.setOperationAmount(32151);
             operation4.setSectionId(1);
             operation4.setSubSectionId(1);
             operation4.setBillId(2);
@@ -117,7 +124,7 @@ public abstract class OperationsDatabase extends RoomDatabase {
             Operation operation5 = new Operation();
             operation5.setOperationName("Little Women");
             operation5.setOperationDescription("Jo March reflects back and forth on.");
-            operation5.setOperationAmount("87954");
+            operation5.setOperationAmount(87954);
             operation5.setSectionId(1);
             operation5.setSubSectionId(2);
             operation5.setBillId(2);
@@ -125,7 +132,7 @@ public abstract class OperationsDatabase extends RoomDatabase {
             Operation operation6 = new Operation();
             operation6.setOperationName("Vikings");
             operation6.setOperationDescription("Vikings transports us to the brutal.");
-            operation6.setOperationAmount("3453");
+            operation6.setOperationAmount(3453);
             operation6.setSectionId(2);
             operation6.setSubSectionId(2);
             operation6.setBillId(2);
@@ -133,7 +140,7 @@ public abstract class OperationsDatabase extends RoomDatabase {
             Operation operation7 = new Operation();
             operation7.setOperationName("1917");
             operation7.setOperationDescription("Two young British soldiers during t.");
-            operation7.setOperationAmount("456");
+            operation7.setOperationAmount(456);
             operation7.setSectionId(3);
             operation7.setSubSectionId(3);
             operation7.setBillId(3);
@@ -141,7 +148,7 @@ public abstract class OperationsDatabase extends RoomDatabase {
             Operation operation8 = new Operation();
             operation8.setOperationName("The Witcher");
             operation8.setOperationDescription("Geralt of Rivia, a solitary monster.");
-            operation8.setOperationAmount("3");
+            operation8.setOperationAmount(35);
             operation8.setSectionId(3);
             operation8.setSubSectionId(2);
             operation8.setBillId(3);
@@ -149,7 +156,7 @@ public abstract class OperationsDatabase extends RoomDatabase {
             Operation operation9 = new Operation();
             operation9.setOperationName("The Outsider");
             operation9.setOperationDescription("Investigators are confounded over a.");
-            operation9.setOperationAmount("5678");
+            operation9.setOperationAmount(5678);
             operation9.setSectionId(3);
             operation9.setSubSectionId(3);
             operation9.setBillId(3);

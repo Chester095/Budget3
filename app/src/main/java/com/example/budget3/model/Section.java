@@ -45,7 +45,7 @@ public class Section extends BaseObservable {
 
     public void setSectionName(String sectionName) {
         this.sectionName = sectionName;
-//        notifyPropertyChanged(BR.sectionName);
+        notifyPropertyChanged(BR.sectionName);
     }
 
     @Override
