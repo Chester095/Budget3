@@ -41,7 +41,7 @@ public class AddEditActivity extends AppCompatActivity {
 
             operation.setOperationName(intent.getStringExtra(OPERATION_NAME));
             operation.setOperationDescription(intent.getStringExtra(OPERATION_DESCRIPTION));
-            operation.setOperationAmount(Integer.parseInt(intent.getStringExtra(OPERATION_AMOUNT)));
+            operation.setOperationAmount(intent.getStringExtra(OPERATION_AMOUNT));
         } else {
             setTitle("Add operation");
         }

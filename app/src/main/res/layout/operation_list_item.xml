@@ -7,6 +7,7 @@
         <variable
             name="operation"
             type="com.example.budget3.model.Operation" />
+
     </data>
 
     <androidx.cardview.widget.CardView
@@ -31,10 +32,10 @@
                     android:id="@+id/nameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="28sp"
-                    android:layout_weight="3"
                     android:text="@{operation.OperationName}"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_weight="3"/>
 
                 <TextView
                     android:id="@+id/valueTextView"
@@ -43,7 +44,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="0"
                     android:gravity="right"
-                    android:text="@{Integer.toString(operation.OperationAmount}"
+                    android:text="@{operation.OperationAmount}"
                     android:textSize="16sp"
                     android:textStyle="italic" />
 
@@ -59,10 +60,10 @@
                     android:id="@+id/descriptionTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="28sp"
-                    android:layout_weight="3"
                     android:text="@{operation.OperationDescription}"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_weight="3"/>
 
 
                 <TextView
@@ -72,35 +73,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="0"
                     android:gravity="right"
-                    android:text="@{operation.billId}"
-                    android:textSize="16sp"
-                    android:textStyle="italic" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="4dp">
-
-                <TextView
-                    android:id="@+id/sectionTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="28sp"
-                    android:layout_weight="3"
-                    android:text="sectionId"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-
-                <TextView
-                    android:id="@+id/subSectionTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0"
-                    android:gravity="right"
-                    android:text="subSectionId"
+                    android:text="Счёт"
                     android:textSize="16sp"
                     android:textStyle="italic" />
             </LinearLayout>

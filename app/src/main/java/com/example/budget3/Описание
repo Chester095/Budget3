@@ -1,21 +1,3 @@
-
-Базы данных:
-1.	СМС (int idSms, String textSms, String senderSms, long dateTimeSms, char checkSms)
-2.	Правила СМС (int idRulesSms, arraylist[String rule][String textCondition], String Actions)
-3.	Список операций (Operations_table):
-    v•	Личный ID - int operations_id,
-    v•	ID для привязки счёта - int bill_id,
-    •	ID для привязки раздела (статьи) - int section_id,
-    •	ID для привязки подраздела (подстатьи) int subsection_id,
-    v•	Сумма расхода - double operationAmount,
-    •	ID для привязки типа операции - int operationType_id,
-    v•	Примечание к операции – String operationDescription,
-    •	Дата операции - Calendar operationDate
-4.	Счета (int idBill, String billName, String billType, double billProcent, String billNote, String currency)
-5.	Статьи (int idSection, String sectionType)
-6.	Подстатьи (int idSubsection, String Subsection, int itemTypeNumber)
-
-
 ТЗ НА ПРОГРАММУ ВЕДЕНИЯ И ПЛАНИРОВАНИЯ БЮДЖЕТА
 
 1.	Главный экран (список расходов запланированных. При подтверждении фоновый цвет меняется на полосу диаграммы, длина которой относительно от ширины экрана показывает процент остатка по данной статье расходов, цвет отображает соответствие плану)
@@ -46,7 +28,21 @@
     a.	Такой же как добавления, только с кнопкой удаления
 
 
-
+Базы данных:
+1.	СМС (int idSms, String textSms, String senderSms, long dateTimeSms, char checkSms)
+2.	Правила СМС (int idRulesSms, arraylist[String rule][String textCondition], String Actions)
+3.	Список операций (Operations_table):
+    •	Личный ID - int operations_id,
+    •	ID для привязки счёта - int bill_id,
+    •	ID для привязки раздела (статьи) - int section_id,
+    •	ID для привязки подраздела (подстатьи) int subsection_id,
+    •	Сумма расхода - double operationAmount,
+    •	ID для привязки типа операции - int operationType_id,
+    •	Примечание к операции – String operationDescription,
+    •	Дата операции - Calendar operationDate
+4.	Счета (int idBill, String billName, String billType, double billProcent, String billNote, String currency)
+5.	Статьи (int idSection, String sectionType)
+6.	Подстатьи (int idSubsection, String Subsection, int itemTypeNumber)
 
 
  

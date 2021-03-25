@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
             operation.setBillId(selectedBillId);
             operation.setOperationName(data.getStringExtra(AddEditActivity.OPERATION_NAME));
             operation.setOperationDescription(data.getStringExtra(AddEditActivity.OPERATION_DESCRIPTION));
-            operation.setOperationAmount(data.getIntExtra(AddEditActivity.OPERATION_AMOUNT,0));
+            operation.setOperationAmount(data.getStringExtra(AddEditActivity.OPERATION_AMOUNT));
 
             mainActivityViewModel.addNewOperation(operation);
 
@@ -214,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
             operation.setBillId(selectedBillId);
             operation.setOperationName(data.getStringExtra(AddEditActivity.OPERATION_NAME));
             operation.setOperationDescription(data.getStringExtra(AddEditActivity.OPERATION_DESCRIPTION));
-            operation.setOperationAmount(data.getIntExtra(AddEditActivity.OPERATION_AMOUNT,0));
+            operation.setOperationAmount(data.getStringExtra(AddEditActivity.OPERATION_AMOUNT));
 
             mainActivityViewModel.updateOperation(operation);
 
