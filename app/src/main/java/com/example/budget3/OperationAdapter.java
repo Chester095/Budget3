@@ -33,7 +33,7 @@ public class OperationAdapter extends RecyclerView.Adapter<com.example.budget3.O
     }
 
 
-    //получаем объект
+    //получаем объект из АррейЛиста
     @Override
     public void onBindViewHolder(@NonNull OperationViewHolder holder, int position) {
         Operation operation = operationArrayList.get(position);
@@ -60,7 +60,7 @@ public class OperationAdapter extends RecyclerView.Adapter<com.example.budget3.O
                 public void onClick(View view) {
                     //можем получить позицию кликнутого элемента
                     int position = getAdapterPosition();
-                    //делаем проверку
+                    //делаем проверку на наличие данных
                     if (onItemClickListener != null && position != RecyclerView.NO_POSITION) {
                         onItemClickListener.onItemClick(operationArrayList.get(position));
                     }

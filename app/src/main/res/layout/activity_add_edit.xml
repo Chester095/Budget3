@@ -12,7 +12,7 @@
         <variable
             name="operation"
             type="com.example.budget3.model.Operation" />
-
+        <import type="com.example.budget3.model.Converter" />
     </data>
 
     <LinearLayout
@@ -67,7 +67,8 @@
         <EditText
             android:id="@+id/OperationAmountEditText"
             android:hint="Amount"
-            android:text="@={operation.OperationAmount}"
+            android:inputType="number"
+            android:text="@{Converter.intToString(operation.OperationAmount)}"
             android:layout_marginTop="16dp"
             android:textSize="24sp"
             android:layout_width="match_parent"

@@ -1,5 +1,7 @@
 package com.example.budget3.model;
 
+import android.widget.Toast;
+
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.databinding.library.baseAdapters.BR;
@@ -12,6 +14,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "operations_table", foreignKeys = @ForeignKey(entity = Bill.class,
         parentColumns = "id", childColumns = "bill_id",//связываем таблицы
         onDelete = ForeignKey.CASCADE)) // указываем, что если срока жанра будет удалена, что делать со всеми фильмами (удаляем)
+
 public class Operation extends BaseObservable {
 
     @PrimaryKey(autoGenerate = true)
@@ -24,13 +27,14 @@ public class Operation extends BaseObservable {
     @ColumnInfo(name = "bill_id")
     private int billId;
     @ColumnInfo(name = "operation_amount")
-    private String operationAmount;
+    private int operationAmount;
 
     @Ignore
     public Operation() {
     }
 
-    public Operation(int operationId, String operationName, String operationDescription, int billId, String operationAmount) {
+    public Operation(int operationId, String operationName, String operationDescription, int billId, int operationAmount) {
+        System.out.println("SOUT - Operation");
         this.operationId = operationId;
         this.operationName = operationName;
         this.operationDescription = operationDescription;
@@ -44,6 +48,7 @@ public class Operation extends BaseObservable {
     }
 
     public void setOperationId(int OperationId) {
+        System.out.println("SOUT - setOperationId");
         this.operationId = OperationId;
         notifyPropertyChanged(BR.operationId);
     }
@@ -54,6 +59,7 @@ public class Operation extends BaseObservable {
     }
 
     public void setOperationName(String OperationName) {
+        System.out.println("SOUT - setOperationName");
         this.operationName = OperationName;
         notifyPropertyChanged(BR.operationName);
     }
@@ -64,6 +70,7 @@ public class Operation extends BaseObservable {
     }
 
     public void setOperationDescription(String OperationDescription) {
+        System.out.println("SOUT - setOperationDescription");
         this.operationDescription = OperationDescription;
         notifyPropertyChanged(BR.operationDescription);
     }
@@ -74,15 +81,26 @@ public class Operation extends BaseObservable {
     }
 
     public void setBillId(int billId) {
+        System.out.println("SOUT - setBillId");
         this.billId = billId;
         notifyPropertyChanged(BR.billId);
     }
 
     @Bindable
-    public String getOperationAmount() { return operationAmount; }
+    public int getOperationAmount() { return operationAmount; }
 
-    public void setOperationAmount(String OperationAmount) {
+    public void setOperationAmount(int OperationAmount) {
+        System.out.println("SOUT - setOperationAmount_1");
         this.operationAmount = OperationAmount;
+        System.out.println("SOUT - setOperationAmount_2");
+        notifyPropertyChanged(BR.operationAmount);
+    }
+
+
+    // вот эта фигня загрывает ошибку при компиляции, но при выводе приложения ошибка выключает приложение
+    public void setOperationAmount(String stringExtra) {
+        System.out.println("SOUT - setOperationAmount_3");
+        this.operationAmount = Integer.parseInt(stringExtra);
         notifyPropertyChanged(BR.operationAmount);
     }
 }
