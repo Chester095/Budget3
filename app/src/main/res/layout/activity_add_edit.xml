@@ -68,7 +68,7 @@
             android:id="@+id/OperationAmountEditText"
             android:hint="Amount"
             android:inputType="number"
-            android:text="@{Converter.intToString(operation.OperationAmount)}"
+            android:text="@={Converter.intToString(operation.OperationAmount)}"
             android:layout_marginTop="16dp"
             android:textSize="24sp"
             android:layout_width="match_parent"

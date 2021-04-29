@@ -118,8 +118,6 @@ public class MainActivity extends AppCompatActivity {
         public void onFabClicked(View view) {
             System.out.println("SOUT - onFabClicked");
 
-//            Toast.makeText(MainActivity.this, "Button is clicked!",
-//                    Toast.LENGTH_SHORT).show();
             //чтобы открывать AddEditActivity
             Intent intent = new Intent(MainActivity.this, AddEditActivity.class);
                 //так как по нажатию кнопки мы создаём новый объект, то передаём ADD_OPERATION_REQUEST_CODE
@@ -210,9 +208,13 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == ADD_OPERATION_REQUEST_CODE && resultCode == RESULT_OK) {
 
             Operation operation = new Operation();
+            System.out.println("SOUT -  selectedBillId = " + selectedBillId);
             operation.setBillId(selectedBillId);
+            System.out.println("SOUT -  OPERATION_NAME_1 = " + AddEditActivity.OPERATION_NAME);
             operation.setOperationName(data.getStringExtra(AddEditActivity.OPERATION_NAME));
+            System.out.println("SOUT -  OPERATION_DESCRIPTION_1 = " + AddEditActivity.OPERATION_DESCRIPTION);
             operation.setOperationDescription(data.getStringExtra(AddEditActivity.OPERATION_DESCRIPTION));
+            System.out.println("SOUT -  OPERATION_AMOUNT_1 = " + AddEditActivity.OPERATION_AMOUNT);
             operation.setOperationAmount(data.getIntExtra(AddEditActivity.OPERATION_AMOUNT,0));
 
             mainActivityViewModel.addNewOperation(operation);
@@ -222,8 +224,11 @@ public class MainActivity extends AppCompatActivity {
             Operation operation = new Operation();
             operation.setOperationId(selectedOperationId);
             operation.setBillId(selectedBillId);
+            System.out.println("SOUT -  OPERATION_NAME_2 = " + AddEditActivity.OPERATION_NAME);
             operation.setOperationName(data.getStringExtra(AddEditActivity.OPERATION_NAME));
+            System.out.println("SOUT -  OPERATION_DESCRIPTION_2 = " + AddEditActivity.OPERATION_DESCRIPTION);
             operation.setOperationDescription(data.getStringExtra(AddEditActivity.OPERATION_DESCRIPTION));
+            System.out.println("SOUT -  OPERATION_AMOUNT_2 = " + AddEditActivity.OPERATION_AMOUNT);
             operation.setOperationAmount(data.getIntExtra(AddEditActivity.OPERATION_AMOUNT,0));
 
             mainActivityViewModel.updateOperation(operation);

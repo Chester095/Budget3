@@ -34,7 +34,7 @@ public class Operation extends BaseObservable {
     }
 
     public Operation(int operationId, String operationName, String operationDescription, int billId, int operationAmount) {
-        System.out.println("SOUT - Operation");
+        System.out.println("SOUT - Operation = " + operationId + ", " + operationName + ", " + operationDescription + ", " + operationAmount);
         this.operationId = operationId;
         this.operationName = operationName;
         this.operationDescription = operationDescription;
@@ -44,63 +44,69 @@ public class Operation extends BaseObservable {
 
     @Bindable
     public int getOperationId() {
+        System.out.println("SOUT - getOperationId = " + operationId);
         return operationId;
     }
 
     public void setOperationId(int OperationId) {
-        System.out.println("SOUT - setOperationId");
+        System.out.println("SOUT - setOperationId = " + OperationId);
         this.operationId = OperationId;
         notifyPropertyChanged(BR.operationId);
     }
 
     @Bindable
     public String getOperationName() {
+        System.out.println("SOUT - getOperationName = " + operationName);
         return operationName;
     }
 
     public void setOperationName(String OperationName) {
-        System.out.println("SOUT - setOperationName");
+        System.out.println("SOUT - setOperationName = " + OperationName);
         this.operationName = OperationName;
         notifyPropertyChanged(BR.operationName);
     }
 
     @Bindable
     public String getOperationDescription() {
+        System.out.println("SOUT - getOperationDescription = " + operationDescription);
         return operationDescription;
     }
 
     public void setOperationDescription(String OperationDescription) {
-        System.out.println("SOUT - setOperationDescription");
+        System.out.println("SOUT - setOperationDescription = " + OperationDescription);
         this.operationDescription = OperationDescription;
         notifyPropertyChanged(BR.operationDescription);
     }
 
     @Bindable
     public int getBillId() {
+        System.out.println("SOUT - getBillId = " + billId);
         return billId;
     }
 
     public void setBillId(int billId) {
-        System.out.println("SOUT - setBillId");
+        System.out.println("SOUT - setBillId = " + billId);
         this.billId = billId;
         notifyPropertyChanged(BR.billId);
     }
 
     @Bindable
-    public int getOperationAmount() { return operationAmount; }
+    public int getOperationAmount() {
+        System.out.println("SOUT - getOperationAmount = " + operationAmount);
+        return operationAmount;
+    }
 
     public void setOperationAmount(int OperationAmount) {
-        System.out.println("SOUT - setOperationAmount_1");
+        System.out.println("SOUT - setOperationAmount = " + OperationAmount);
         this.operationAmount = OperationAmount;
-        System.out.println("SOUT - setOperationAmount_2");
         notifyPropertyChanged(BR.operationAmount);
     }
 
 
-    // вот эта фигня загрывает ошибку при компиляции, но при выводе приложения ошибка выключает приложение
+/*    // вот эта фигня загрывает ошибку при компиляции, но при выводе приложения ошибка выключает приложение
     public void setOperationAmount(String stringExtra) {
         System.out.println("SOUT - setOperationAmount_3");
         this.operationAmount = Integer.parseInt(stringExtra);
         notifyPropertyChanged(BR.operationAmount);
-    }
+    }*/
 }

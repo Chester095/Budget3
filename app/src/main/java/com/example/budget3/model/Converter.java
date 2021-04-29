@@ -6,6 +6,7 @@ public abstract class Converter {
 
     @InverseMethod("stringToInt")
     public static String intToString(int value) {
+        System.out.println("SOUT -  Converter = " + value);
         return String.valueOf(value);
     }
 
@@ -13,7 +14,21 @@ public abstract class Converter {
         try {
             return Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            return 0;
+            return -1;
+        }
+    }
+
+    @InverseMethod("stringToDouble")
+    public static String doubleToString(double value) {
+        System.out.println("SOUT -  Converter = " + value);
+        return String.valueOf(value);
+    }
+
+    public static double stringToDouble(String value) {
+        try {
+            return Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            return -1;
         }
     }
 }
