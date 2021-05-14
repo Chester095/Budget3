@@ -74,6 +74,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <TextView
+            android:id="@+id/OperationAmountTextViewD"
+            android:text="AmountD"
+            android:layout_marginTop="16dp"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/OperationAmountEditTextD"
+            android:hint="AmountD"
+            android:inputType="number"
+            android:text="@={Converter.doubleToString(operation.OperationAmountD)}"
+            android:layout_marginTop="16dp"
+            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
 
         <Button
             android:id="@+id/okButton"

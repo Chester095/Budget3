@@ -32,7 +32,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         return billOperations;
     }
 
-    //метод чтобы добавлять новый фильм
+    //метод чтобы добавлять новые операции
     public void addNewOperation(Operation operation) {
         appRepository.insertOperation(operation);
     }

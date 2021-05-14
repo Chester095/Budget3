@@ -22,6 +22,7 @@ public class AddEditActivity extends AppCompatActivity {
     public static final String OPERATION_NAME = "OperationName";
     public static final String OPERATION_DESCRIPTION = "OperationDescription";
     public static final String OPERATION_AMOUNT = "OperationAmount";
+    public static final String OPERATION_AMOUNTD = "OperationAmountD";
     private ActivityAddEditBinding activityAddEditBinding;
     private AddEditActivityClickHandlers addEditActivityClickHandlers;
 
@@ -53,6 +54,8 @@ public class AddEditActivity extends AppCompatActivity {
             operation.setOperationDescription(intent.getStringExtra(OPERATION_DESCRIPTION));
             System.out.println("SOUT -  OPERATION_AMOUNT = " + intent.getIntExtra(OPERATION_AMOUNT, 0));
             operation.setOperationAmount(intent.getIntExtra(OPERATION_AMOUNT, 0));
+            System.out.println("SOUT -  OPERATION_AMOUNTD = " + intent.getIntExtra(OPERATION_AMOUNTD, 0));
+            operation.setOperationAmountD(intent.getIntExtra(OPERATION_AMOUNTD, 0));
         } else {
             setTitle("Add operation");
         }
@@ -77,6 +80,8 @@ public class AddEditActivity extends AppCompatActivity {
                 Toast.makeText(context, "Please input the name", Toast.LENGTH_SHORT).show();
             } else if (operation.getOperationAmount() == 0) {
                 Toast.makeText(context, "Введите стоимость", Toast.LENGTH_LONG).show();
+            } else if (operation.getOperationAmountD() == 0) {
+                Toast.makeText(context, "Введите стоимостьD", Toast.LENGTH_LONG).show();
             } else {
                 //создаём новый Интент
                 Intent intent = new Intent();
@@ -87,6 +92,8 @@ public class AddEditActivity extends AppCompatActivity {
                 intent.putExtra(OPERATION_DESCRIPTION, operation.getOperationDescription());
                 System.out.println("SOUT -  AddEditActivityClickHandlers OPERATION_AMOUNT = " + operation.getOperationAmount());
                 intent.putExtra(OPERATION_AMOUNT, operation.getOperationAmount());
+                System.out.println("SOUT -  AddEditActivityClickHandlers OPERATION_AMOUNTD = " + operation.getOperationAmountD());
+                intent.putExtra(OPERATION_AMOUNTD, operation.getOperationAmountD());
                 setResult(RESULT_OK, intent);
                 finish();
 

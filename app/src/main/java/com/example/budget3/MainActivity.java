@@ -173,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(AddEditActivity.OPERATION_NAME, operation.getOperationName());
                 intent.putExtra(AddEditActivity.OPERATION_DESCRIPTION, operation.getOperationDescription());
                 intent.putExtra(AddEditActivity.OPERATION_AMOUNT, operation.getOperationAmount());
+                intent.putExtra(AddEditActivity.OPERATION_AMOUNTD, operation.getOperationAmountD());
                 startActivityForResult(intent, EDIT_OPERATION_REQUEST_CODE);
             }
         });
@@ -216,6 +217,8 @@ public class MainActivity extends AppCompatActivity {
             operation.setOperationDescription(data.getStringExtra(AddEditActivity.OPERATION_DESCRIPTION));
             System.out.println("SOUT -  OPERATION_AMOUNT_1 = " + AddEditActivity.OPERATION_AMOUNT);
             operation.setOperationAmount(data.getIntExtra(AddEditActivity.OPERATION_AMOUNT,0));
+            System.out.println("SOUT -  OPERATION_AMOUNT_1D = " + AddEditActivity.OPERATION_AMOUNTD);
+            operation.setOperationAmountD(data.getIntExtra(AddEditActivity.OPERATION_AMOUNTD,0));
 
             mainActivityViewModel.addNewOperation(operation);
 
@@ -230,6 +233,8 @@ public class MainActivity extends AppCompatActivity {
             operation.setOperationDescription(data.getStringExtra(AddEditActivity.OPERATION_DESCRIPTION));
             System.out.println("SOUT -  OPERATION_AMOUNT_2 = " + AddEditActivity.OPERATION_AMOUNT);
             operation.setOperationAmount(data.getIntExtra(AddEditActivity.OPERATION_AMOUNT,0));
+            System.out.println("SOUT -  OPERATION_AMOUNT_2D = " + AddEditActivity.OPERATION_AMOUNTD);
+            operation.setOperationAmountD(data.getIntExtra(AddEditActivity.OPERATION_AMOUNTD,0));
 
             mainActivityViewModel.updateOperation(operation);
 

@@ -28,18 +28,21 @@ public class Operation extends BaseObservable {
     private int billId;
     @ColumnInfo(name = "operation_amount")
     private int operationAmount;
+    @ColumnInfo(name = "operation_amountD")
+    private double operationAmountD;
 
     @Ignore
     public Operation() {
     }
 
-    public Operation(int operationId, String operationName, String operationDescription, int billId, int operationAmount) {
-        System.out.println("SOUT - Operation = " + operationId + ", " + operationName + ", " + operationDescription + ", " + operationAmount);
+    public Operation(int operationId, String operationName, String operationDescription, int billId, int operationAmount, double operationAmountD) {
+//        System.out.println("SOUT - Operation = " + operationId + ", " + operationName + ", " + operationDescription + ", " + operationAmount);
         this.operationId = operationId;
         this.operationName = operationName;
         this.operationDescription = operationDescription;
         this.billId = billId;
         this.operationAmount = operationAmount;
+        this.operationAmountD = operationAmountD;
     }
 
     @Bindable
@@ -102,11 +105,16 @@ public class Operation extends BaseObservable {
         notifyPropertyChanged(BR.operationAmount);
     }
 
+    @Bindable
+    public double getOperationAmountD() {
+        System.out.println("SOUT - getOperationAmountD = " + operationAmountD);
+        return operationAmountD;
+    }
 
-/*    // вот эта фигня загрывает ошибку при компиляции, но при выводе приложения ошибка выключает приложение
-    public void setOperationAmount(String stringExtra) {
-        System.out.println("SOUT - setOperationAmount_3");
-        this.operationAmount = Integer.parseInt(stringExtra);
-        notifyPropertyChanged(BR.operationAmount);
-    }*/
+    public void setOperationAmountD(double OperationAmountD) {
+        System.out.println("SOUT - setOperationAmountD = " + OperationAmountD);
+        this.operationAmountD = OperationAmountD;
+        notifyPropertyChanged(BR.operationAmountD);
+    }
+
 }
