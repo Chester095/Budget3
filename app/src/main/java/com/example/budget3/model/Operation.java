@@ -36,7 +36,7 @@ public class Operation extends BaseObservable {
     }
 
     public Operation(int operationId, String operationName, String operationDescription, int billId, int operationAmount, double operationAmountD) {
-//        System.out.println("SOUT - Operation = " + operationId + ", " + operationName + ", " + operationDescription + ", " + operationAmount);
+        System.out.println("SOUT2 - Operation = " + operationId + ", " + operationName + ", " + operationDescription + ", " + operationAmount+ ", " + operationAmountD);
         this.operationId = operationId;
         this.operationName = operationName;
         this.operationDescription = operationDescription;
@@ -107,12 +107,12 @@ public class Operation extends BaseObservable {
 
     @Bindable
     public double getOperationAmountD() {
-        System.out.println("SOUT - getOperationAmountD = " + operationAmountD);
+        System.out.println("SOUT2 - getOperationAmountD = " + operationAmountD);
         return operationAmountD;
     }
 
     public void setOperationAmountD(double OperationAmountD) {
-        System.out.println("SOUT - setOperationAmountD = " + OperationAmountD);
+        System.out.println("SOUT2 - setOperationAmountD = " + OperationAmountD);
         this.operationAmountD = OperationAmountD;
         notifyPropertyChanged(BR.operationAmountD);
     }

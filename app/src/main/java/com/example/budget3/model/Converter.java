@@ -19,18 +19,20 @@ public abstract class Converter {
     }
 
     //TODO 17.05.2021 Не работает. Данные из OperationDatabase выгружаются, но при корректировке обнуляются
+    //TODO 20.05.2021 Не работает. Данные из OperationDatabase выгружаются, но при корректировке обнуляются
     @InverseMethod("stringToDouble")
     public static String doubleToString(double value) {
-        System.out.println("SOUT -  Converter doubleToString = " + value);
+        System.out.println("SOUT2 -  Converter doubleToString = " + value);
+        System.out.println("SOUT2 -  Converter doubleToString = " + String.valueOf(value));
         return String.valueOf(value);
-
     }
 
     public static double stringToDouble(String value) {
         try {
+            System.out.println("SOUT2 -  Converter stringToDouble = " + Double.parseDouble(value));
             return Double.parseDouble(value);
         } catch (NumberFormatException e) {
-            System.out.println("SOUT -  Converter stringToDouble NumberFormatException = " + value);
+            System.out.println("SOUT2 -  Converter stringToDouble NumberFormatException = " + value);
             return -1;
         }
     }

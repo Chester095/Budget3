@@ -52,9 +52,9 @@ public class AddEditActivity extends AppCompatActivity {
             operation.setOperationName(intent.getStringExtra(OPERATION_NAME));
             System.out.println("SOUT -  OPERATION_DESCRIPTION = " + intent.getStringExtra(OPERATION_DESCRIPTION));
             operation.setOperationDescription(intent.getStringExtra(OPERATION_DESCRIPTION));
-            System.out.println("SOUT -  OPERATION_AMOUNT = " + intent.getIntExtra(OPERATION_AMOUNT, 0));
+            System.out.println("SOUT2 -  OPERATION_AMOUNT = " + intent.getIntExtra(OPERATION_AMOUNT, 0));
             operation.setOperationAmount(intent.getIntExtra(OPERATION_AMOUNT, 0));
-            System.out.println("SOUT -  OPERATION_AMOUNTD = " + intent.getIntExtra(OPERATION_AMOUNTD, 0));
+            System.out.println("SOUT2 -  OPERATION_AMOUNTD = " + intent.getIntExtra(OPERATION_AMOUNTD, 0));
             operation.setOperationAmountD(intent.getIntExtra(OPERATION_AMOUNTD, 0));
         } else {
             setTitle("Add operation");
@@ -90,9 +90,9 @@ public class AddEditActivity extends AppCompatActivity {
                 intent.putExtra(OPERATION_NAME, operation.getOperationName());
                 System.out.println("SOUT -  AddEditActivityClickHandlers OPERATION_DESCRIPTION = " + operation.getOperationDescription());
                 intent.putExtra(OPERATION_DESCRIPTION, operation.getOperationDescription());
-                System.out.println("SOUT -  AddEditActivityClickHandlers OPERATION_AMOUNT = " + operation.getOperationAmount());
+                System.out.println("SOUT2 -  AddEditActivityClickHandlers OPERATION_AMOUNT = " + operation.getOperationAmount());
                 intent.putExtra(OPERATION_AMOUNT, operation.getOperationAmount());
-                System.out.println("SOUT -  AddEditActivityClickHandlers OPERATION_AMOUNTD = " + operation.getOperationAmountD());
+                System.out.println("SOUT2 -  AddEditActivityClickHandlers OPERATION_AMOUNTD = " + operation.getOperationAmountD());
                 intent.putExtra(OPERATION_AMOUNTD, operation.getOperationAmountD());
                 setResult(RESULT_OK, intent);
                 finish();

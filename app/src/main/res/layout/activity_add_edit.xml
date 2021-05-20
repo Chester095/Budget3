@@ -2,9 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    
+
     <data>
-        
+
         <variable
             name="clickHandlers"
             type="com.example.budget3.AddEditActivity.AddEditActivityClickHandlers" />
@@ -12,97 +12,98 @@
         <variable
             name="operation"
             type="com.example.budget3.model.Operation" />
+
         <import type="com.example.budget3.model.Converter" />
     </data>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:padding="4dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="4dp"
         tools:context=".AddEditActivity">
 
         <TextView
             android:id="@+id/OperationNameTextView"
-            android:text="Name"
-            android:layout_marginTop="16dp"
-            android:textSize="24sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Name"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/OperationNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:hint="Name"
             android:text="@={operation.OperationName}"
-            android:layout_marginTop="16dp"
-            android:textSize="24sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/OperationDescriptionTextView"
-            android:text="Description"
-            android:layout_marginTop="16dp"
-            android:textSize="24sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Description"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/OperationDescriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:hint="Description"
             android:text="@={operation.OperationDescription}"
-            android:layout_marginTop="16dp"
-            android:textSize="24sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/OperationAmountTextView"
-            android:text="Amount"
-            android:layout_marginTop="16dp"
-            android:textSize="24sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Amount"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/OperationAmountEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:hint="Amount"
             android:inputType="number"
             android:text="@={Converter.intToString(operation.OperationAmount)}"
-            android:layout_marginTop="16dp"
-            android:textSize="24sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/OperationAmountTextViewD"
-            android:text="AmountD"
-            android:layout_marginTop="16dp"
-            android:textSize="24sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="AmountD"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/OperationAmountEditTextD"
-            android:hint="AmountD"
-            android:inputType="number"
-            android:text="@={Converter.doubleToString(operation.OperationAmountD)}"
-            android:layout_marginTop="16dp"
-            android:textSize="24sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="AmountD"
+            android:inputType="numberDecimal"
+            android:text="@={Converter.doubleToString(operation.OperationAmountD)}"
+            android:textSize="24sp" />
 
 
         <Button
             android:id="@+id/okButton"
-            android:onClick="@{clickHandlers::onOkButtonClicked}"
-            android:text="Ok"
-            android:textSize="24sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:onClick="@{clickHandlers::onOkButtonClicked}"
+            android:text="Ok"
+            android:textSize="24sp" />
 
     </LinearLayout>
-    
+
 </layout>

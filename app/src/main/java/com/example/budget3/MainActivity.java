@@ -234,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("SOUT -  OPERATION_AMOUNT_2 = " + AddEditActivity.OPERATION_AMOUNT);
             operation.setOperationAmount(data.getIntExtra(AddEditActivity.OPERATION_AMOUNT,0));
             System.out.println("SOUT -  OPERATION_AMOUNT_2D = " + AddEditActivity.OPERATION_AMOUNTD);
-            operation.setOperationAmountD(data.getIntExtra(AddEditActivity.OPERATION_AMOUNTD,0));
+            operation.setOperationAmountD(data.getDoubleExtra(AddEditActivity.OPERATION_AMOUNTD,0));
 
             mainActivityViewModel.updateOperation(operation);
 
