@@ -18,7 +18,6 @@ public abstract class Converter {
         }
     }
 
-    //TODO 21.05.2021 удалить переменную INT и вставить на её место Double
     @InverseMethod("stringToDouble")
     public static String doubleToString(double value) {
         System.out.println("SOUT2 -  Converter doubleToString = " + value);

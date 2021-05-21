@@ -11,6 +11,8 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.util.Calendar;
+
 @Entity(tableName = "operations_table", foreignKeys = @ForeignKey(entity = Bill.class,
         parentColumns = "id", childColumns = "bill_id",//связываем таблицы
         onDelete = ForeignKey.CASCADE)) // указываем, что если срока жанра будет удалена, что делать со всеми фильмами (удаляем)
@@ -28,19 +30,22 @@ public class Operation extends BaseObservable {
     private int billId;
     @ColumnInfo(name = "operation_amount")
     private double operationAmount;
+    @ColumnInfo(name = "operationDate")
+    private Calendar operationDate;
 
 
     @Ignore
     public Operation() {
     }
 
-    public Operation(int operationId, String operationName, String operationDescription, int billId, double operationAmount) {
-        System.out.println("SOUT2 - Operation = " + operationId + ", " + operationName + ", " + operationDescription + ", " + operationAmount);
+    public Operation(int operationId, String operationName, String operationDescription, int billId, double operationAmount, Calendar operationDate) {
+        System.out.println("SOUT2 - Operation = " + operationId + ", " + operationName + ", " + operationDescription + ", " + operationAmount + ", " + operationDate);
         this.operationId = operationId;
         this.operationName = operationName;
         this.operationDescription = operationDescription;
         this.billId = billId;
         this.operationAmount = operationAmount;
+        this.operationDate = operationDate;
     }
 
     @Bindable
@@ -101,6 +106,18 @@ public class Operation extends BaseObservable {
         System.out.println("SOUT - setOperationAmount = " + OperationAmount);
         this.operationAmount = OperationAmount;
         notifyPropertyChanged(BR.operationAmount);
+    }
+
+    @Bindable
+    public Calendar getOperationDate() {
+        System.out.println("SOUT - getOperationDate = " + operationDate);
+        return operationDate;
+    }
+
+    public void setOperationDate(Calendar OperationDate) {
+        System.out.println("SOUT - setOperationAmount = " + OperationDate);
+        this.operationDate = OperationDate;
+        notifyPropertyChanged(BR.operationDate);
     }
 
 }

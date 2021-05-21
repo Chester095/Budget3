@@ -36,6 +36,7 @@
     •	Примечание к операции                   – String    operation_description,
     •	Сумма расхода                           - double    operation_amount,
     •	ID для привязки счёта                   - int       bill_id,
+        //TODO 24.05.2021 Добавить дату операции
     •	Дата операции                           - Calendar  operationDate
     •	ID для привязки раздела (статьи)        - int       section_id,
     •	ID для привязки подраздела (подстатьи)  - int       subsection_id,

@@ -22,6 +22,7 @@ public class AddEditActivity extends AppCompatActivity {
     public static final String OPERATION_NAME = "OperationName";
     public static final String OPERATION_DESCRIPTION = "OperationDescription";
     public static final String OPERATION_AMOUNT = "OperationAmount";
+    public static final String OPERATION_DATE = "OperationDate";
     private ActivityAddEditBinding activityAddEditBinding;
     private AddEditActivityClickHandlers addEditActivityClickHandlers;
 
@@ -53,6 +54,9 @@ public class AddEditActivity extends AppCompatActivity {
             operation.setOperationDescription(intent.getStringExtra(OPERATION_DESCRIPTION));
             System.out.println("SOUT2 -  OPERATION_AMOUNT = " + intent.getDoubleExtra(OPERATION_AMOUNT, 0));
             operation.setOperationAmount(intent.getDoubleExtra(OPERATION_AMOUNT, 0));
+// TODO 24.05.2021 нет такого интента. Надо покурить
+            System.out.println("SOUT3 -  OPERATION_DATE = " + intent.getDoubleExtra(OPERATION_DATE, 0));
+            operation.setOperationAmount(intent.getDoubleExtra(OPERATION_DATE, 0));
         } else {
             setTitle("Add operation");
         }
@@ -86,6 +90,7 @@ public class AddEditActivity extends AppCompatActivity {
                 System.out.println("SOUT -  AddEditActivityClickHandlers OPERATION_DESCRIPTION = " + operation.getOperationDescription());
                 intent.putExtra(OPERATION_DESCRIPTION, operation.getOperationDescription());
                 intent.putExtra(OPERATION_AMOUNT, operation.getOperationAmount());
+                intent.putExtra(OPERATION_DATE, operation.getOperationDate());
                 setResult(RESULT_OK, intent);
                 finish();
 
