@@ -27,22 +27,20 @@ public class Operation extends BaseObservable {
     @ColumnInfo(name = "bill_id")
     private int billId;
     @ColumnInfo(name = "operation_amount")
-    private int operationAmount;
-    @ColumnInfo(name = "operation_amountD")
-    private double operationAmountD;
+    private double operationAmount;
+
 
     @Ignore
     public Operation() {
     }
 
-    public Operation(int operationId, String operationName, String operationDescription, int billId, int operationAmount, double operationAmountD) {
-        System.out.println("SOUT2 - Operation = " + operationId + ", " + operationName + ", " + operationDescription + ", " + operationAmount+ ", " + operationAmountD);
+    public Operation(int operationId, String operationName, String operationDescription, int billId, double operationAmount) {
+        System.out.println("SOUT2 - Operation = " + operationId + ", " + operationName + ", " + operationDescription + ", " + operationAmount);
         this.operationId = operationId;
         this.operationName = operationName;
         this.operationDescription = operationDescription;
         this.billId = billId;
         this.operationAmount = operationAmount;
-        this.operationAmountD = operationAmountD;
     }
 
     @Bindable
@@ -94,27 +92,15 @@ public class Operation extends BaseObservable {
     }
 
     @Bindable
-    public int getOperationAmount() {
+    public double getOperationAmount() {
         System.out.println("SOUT - getOperationAmount = " + operationAmount);
         return operationAmount;
     }
 
-    public void setOperationAmount(int OperationAmount) {
+    public void setOperationAmount(double OperationAmount) {
         System.out.println("SOUT - setOperationAmount = " + OperationAmount);
         this.operationAmount = OperationAmount;
         notifyPropertyChanged(BR.operationAmount);
-    }
-
-    @Bindable
-    public double getOperationAmountD() {
-        System.out.println("SOUT2 - getOperationAmountD = " + operationAmountD);
-        return operationAmountD;
-    }
-
-    public void setOperationAmountD(double OperationAmountD) {
-        System.out.println("SOUT2 - setOperationAmountD = " + OperationAmountD);
-        this.operationAmountD = OperationAmountD;
-        notifyPropertyChanged(BR.operationAmountD);
     }
 
 }

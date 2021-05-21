@@ -18,12 +18,11 @@ public abstract class Converter {
         }
     }
 
-    //TODO 17.05.2021 Не работает. Данные из OperationDatabase выгружаются, но при корректировке обнуляются
-    //TODO 20.05.2021 Не работает. Данные из OperationDatabase выгружаются, но при корректировке обнуляются
+    //TODO 21.05.2021 удалить переменную INT и вставить на её место Double
     @InverseMethod("stringToDouble")
     public static String doubleToString(double value) {
         System.out.println("SOUT2 -  Converter doubleToString = " + value);
-        System.out.println("SOUT2 -  Converter doubleToString = " + String.valueOf(value));
+//        System.out.println("SOUT2 -  Converter doubleToString = " + String.valueOf(value));
         return String.valueOf(value);
     }
 

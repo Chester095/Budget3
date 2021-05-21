@@ -44,7 +44,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="0"
                     android:gravity="right"
-                    android:text="@{Converter.intToString(operation.OperationAmount)}"
+                    android:text="@{Converter.doubleToString(operation.OperationAmount)}"
                     android:textSize="16sp"
                     android:textStyle="italic" />
 
@@ -73,7 +73,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="0"
                     android:gravity="right"
-                    android:text="@{Converter.doubleToString(operation.OperationAmountD)}"
+                    android:text="Пусто"
                     android:textSize="16sp"
                     android:textStyle="italic" />
             </LinearLayout>

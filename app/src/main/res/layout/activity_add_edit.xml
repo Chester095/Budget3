@@ -40,29 +40,13 @@
             android:text="@={operation.OperationName}"
             android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/OperationDescriptionTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Description"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/OperationDescriptionEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Description"
-            android:text="@={operation.OperationDescription}"
-            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/OperationAmountTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Amount"
+            android:text="Сумма операции"
             android:textSize="24sp" />
 
         <EditText
@@ -72,25 +56,25 @@
             android:layout_marginTop="16dp"
             android:hint="Amount"
             android:inputType="number"
-            android:text="@={Converter.intToString(operation.OperationAmount)}"
+            android:text="@={Converter.doubleToString(operation.OperationAmount)}"
             android:textSize="24sp" />
 
+
         <TextView
-            android:id="@+id/OperationAmountTextViewD"
+            android:id="@+id/OperationDescriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="AmountD"
+            android:text="Примечания"
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/OperationAmountEditTextD"
+            android:id="@+id/OperationDescriptionEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="AmountD"
-            android:inputType="numberDecimal"
-            android:text="@={Converter.doubleToString(operation.OperationAmountD)}"
+            android:hint="Примечания"
+            android:text="@={operation.OperationDescription}"
             android:textSize="24sp" />
 
 
